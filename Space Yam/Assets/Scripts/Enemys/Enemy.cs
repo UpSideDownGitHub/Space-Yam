@@ -13,9 +13,6 @@ public class Enemy : MonoBehaviour
 
     [Header("Path")]
     public float minDistance;
-
-    public List<Vector3[]> Paths = new List<Vector3[]>();
-
     public Vector3[] chosenPath;
     public int currentPoint;
 
@@ -32,45 +29,6 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Vector3[] path1 = { new Vector3(-18, 10, 0), 
-                            new Vector3(-8 , 10, 0), 
-                            new Vector3(-8 , 0 , 0), 
-                            new Vector3(-18, 0 , 0)};
-        Vector3[] path2 = { new Vector3(18, 10, 0),
-                            new Vector3(8 , 10, 0),
-                            new Vector3(8 , 0 , 0),
-                            new Vector3(18, 0 , 0)};
-        Vector3[] path3 = { new Vector3(-18, -10, 0),
-                            new Vector3(-8 , -10, 0),
-                            new Vector3(-8 , 0 , 0),
-                            new Vector3(-18, 0 , 0)};
-        Vector3[] path4 = { new Vector3(18, -10, 0),
-                            new Vector3(8 , -10, 0),
-                            new Vector3(8 , 0 , 0),
-                            new Vector3(18, 0 , 0)};
-        Vector3[] path5 = { new Vector3(0, 10 , 0),
-                            new Vector3(0, -10, 0)};
-        Vector3[] path6 = { new Vector3(20 , 0, 0),
-                            new Vector3(-20, 0, 0)};
-        Vector3[] path7 = { new Vector3(20, 10, 0),
-                            new Vector3(-20, -10, 0)};
-        Vector3[] path8 = { new Vector3(-20, 10, 0),
-                            new Vector3(20, -10, 0)};
-
-
-        Paths.Add(path1);
-        Paths.Add(path2);
-        Paths.Add(path3);
-        Paths.Add(path4);
-        Paths.Add(path5);
-        Paths.Add(path6);
-        Paths.Add(path7);
-        Paths.Add(path8);
-
-
-        // randomly set the path the enemy will take
-        chosenPath = Paths[Random.Range(0, Paths.Count)];
-
         agent.SetDestination(new Vector3(chosenPath[currentPoint].x, chosenPath[currentPoint].y, transform.position.z));
     }
 
@@ -85,7 +43,6 @@ public class Enemy : MonoBehaviour
             GameObject tempBullet = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
             tempBullet.GetComponent<Rigidbody>().AddForce(tempBullet.transform.forward * force);
         }
-
 
         // movement
         if (Vector2.Distance(transform.position, chosenPath[currentPoint]) < minDistance)

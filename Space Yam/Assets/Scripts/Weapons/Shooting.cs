@@ -35,6 +35,12 @@ public class Shooting : MonoBehaviour
     public float shootTime;
     public Slider slider;
 
+    // damaging the enemy
+    public float attackTime;
+    public float laserDamage;
+    private float _timeSinceLastAttack;
+
+    // slider
     private bool _shootingLaser;
     private float _sliderTime;
     private int _sliderMin = 0;
@@ -49,23 +55,25 @@ public class Shooting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _cam = Camera.main;
+        _cam = Camera.main;    
+    }
 
-
-
+    public void OnEnable()
+    {
         if (weaponType == weaponTypes.Laser)
         {
-            slider.enabled = true;
+            slider.gameObject.SetActive(true);
             slider.minValue = _sliderMin;
             slider.maxValue = _sliderMax;
         }
         else
         {
-            slider.enabled = false;
+            slider.gameObject.SetActive(false);
         }
 
         _timeSinceLastShot = 0;
     }
+
 
     // Update is called once per frame
     void Update()
@@ -91,6 +99,23 @@ public class Shooting : MonoBehaviour
                 {
                     _sliderTime += Time.deltaTime;
                     slider.value = Mathf.Lerp(_sliderMin, _sliderMax, _sliderTime / 2);
+                }
+
+                // need to check if enough time has passed to deal damage and if enough has then deal the damage
+                if (Time.time > attackTime + _timeSinceLastAttack)
+                {
+                    _timeSinceLastAttack = Time.time;
+                    // raycast in the direction the player is aiming
+
+                    if (Physics.Raycast(transform.position, aim1-transform.position, out RaycastHit hit, 100))
+                    {
+                        if (hit.collider.CompareTag("Enemy"))
+                        {
+                            // deal damage to the enemy
+                            hit.collider.GetComponent<EnemyHealth>().removeHealth(laserDamage);
+                        }
+                    }
+
                 }
             }
 

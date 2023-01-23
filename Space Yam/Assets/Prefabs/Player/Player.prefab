@@ -120,6 +120,8 @@ MonoBehaviour:
   laserAimPos: {fileID: 0}
   shootTime: 0
   slider: {fileID: 0}
+  attackTime: 0
+  laserDamage: 0
   fire: {fileID: -3773237696552706867, guid: e54c24d0c42f60c4098766943a4dbf68, type: 3}
   mousePosition: {fileID: -4555209704032576719, guid: e54c24d0c42f60c4098766943a4dbf68, type: 3}
 --- !u!1 &8535716047360457983
@@ -178,6 +180,8 @@ MonoBehaviour:
   laserAimPos: {fileID: 0}
   shootTime: 0
   slider: {fileID: 0}
+  attackTime: 0
+  laserDamage: 0
   fire: {fileID: -3773237696552706867, guid: e54c24d0c42f60c4098766943a4dbf68, type: 3}
   mousePosition: {fileID: -4555209704032576719, guid: e54c24d0c42f60c4098766943a4dbf68, type: 3}
 --- !u!1 &8535716047446429618
@@ -236,6 +240,8 @@ MonoBehaviour:
   laserAimPos: {fileID: 0}
   shootTime: 0
   slider: {fileID: 0}
+  attackTime: 0
+  laserDamage: 0
   fire: {fileID: -3773237696552706867, guid: e54c24d0c42f60c4098766943a4dbf68, type: 3}
   mousePosition: {fileID: -4555209704032576719, guid: e54c24d0c42f60c4098766943a4dbf68, type: 3}
 --- !u!1 &8535716047474344896
@@ -556,6 +562,8 @@ MonoBehaviour:
   laserAimPos: {fileID: 8535716047913408908}
   shootTime: 2
   slider: {fileID: 0}
+  attackTime: 0.5
+  laserDamage: 10
   fire: {fileID: -3773237696552706867, guid: e54c24d0c42f60c4098766943a4dbf68, type: 3}
   mousePosition: {fileID: -4555209704032576719, guid: e54c24d0c42f60c4098766943a4dbf68, type: 3}
 --- !u!1001 &8535716046376566425

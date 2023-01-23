@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -20,20 +21,6 @@ public class Bullet : MonoBehaviour
     public void Start()
     {
         _laserLastHitTime = 0;
-    }
-
-    public void OnTriggerStay(Collider other)
-    {
-        if (!laser)
-            return;
-        if (other.CompareTag("Enemy"))
-        {
-            if (Time.time > _laserLastHitTime + laserHitTime)
-            {
-                _laserLastHitTime = Time.time;
-                other.gameObject.GetComponent<EnemyHealth>().removeHealth(damage);
-            }
-        }
     }
 
     public void OnTriggerEnter(Collider other)
