@@ -19,6 +19,14 @@ public class Enemy : MonoBehaviour
     public Vector3[] chosenPath;
     public int currentPoint;
 
+    [Header("================================")]
+    [Header("Attacking")]
+    public GameObject player;
+    public GameObject bullet;
+    public float force;
+    public float attackRate;
+    private float _timeSinceLastAttack;
+
 
     // Start is called before the first frame update
     void Start()
@@ -68,8 +76,16 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Current Posision: " + (Vector2)transform.position);
-        Debug.Log("Node Posision: " + (Vector2)chosenPath[currentPoint]);
+        // attacking
+        if (Time.time > attackRate + _timeSinceLastAttack)
+        {
+            _timeSinceLastAttack = Time.time;
+            GameObject tempBullet = Instantiate(bullet, transform.position, transform.rotation);
+            tempBullet.GetComponent<Rigidbody>().AddForce((transform.position - player.transform.position) * force);
+        }
+
+
+        // movement
         if (Vector2.Distance(transform.position, chosenPath[currentPoint]) < minDistance)
         {
             // set the destination to the new point

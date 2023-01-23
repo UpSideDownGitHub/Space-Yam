@@ -1576,7 +1576,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!4 &1349781129 stripped
 Transform:
@@ -1678,7 +1678,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1535933921
 PrefabInstance:
@@ -1947,7 +1947,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &1810153598
 NavMeshAgent:
@@ -1987,6 +1987,10 @@ MonoBehaviour:
   minDistance: 2
   chosenPath: []
   currentPoint: 0
+  player: {fileID: 0}
+  bullet: {fileID: 0}
+  force: 0
+  attackRate: 0
 --- !u!1001 &2128574971
 PrefabInstance:
   m_ObjectHideFlags: 0
