@@ -8,6 +8,11 @@ public class EnemyHealth : MonoBehaviour
     public float maxHealth;
     public float curHealth;
 
+    public void Start()
+    {
+        curHealth = maxHealth;
+    }
+
     public void removeHealth(float ammount)
     {
         if (curHealth - ammount <= 0)

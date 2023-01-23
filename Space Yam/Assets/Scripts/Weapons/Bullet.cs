@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [Header("General")]
+    public bool enemy;
     public float damage;
 
     [Header("Explosion")]
@@ -37,21 +38,33 @@ public class Bullet : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (enemy)
         {
-            if (explodes)
+            //   MAKE THIS UES THE PLAYER HEATH INSTED OF THE ENEMY HEALTH AS THIS IS STILL NOT FIXED
+            if (other.CompareTag("Player"))
             {
-                GameObject[] enemys = GameObject.FindGameObjectsWithTag("Enemy");
-                for (int i = 0; i < enemys.Length; i++)
+                other.gameObject.GetComponent<EnemyHealth>().removeHealth(damage);
+                Destroy(gameObject);
+            }
+        }
+        else
+        {
+            if (other.CompareTag("Enemy"))
+            {
+                if (explodes)
                 {
-                    if (Vector3.Distance(transform.position, enemys[i].transform.position) > explosionRadius)
+                    GameObject[] enemys = GameObject.FindGameObjectsWithTag("Enemy");
+                    for (int i = 0; i < enemys.Length; i++)
                     {
-                        enemys[i].GetComponent<EnemyHealth>().removeHealth(damage);
+                        if (Vector3.Distance(transform.position, enemys[i].transform.position) > explosionRadius)
+                        {
+                            enemys[i].GetComponent<EnemyHealth>().removeHealth(damage);
+                        }
                     }
                 }
+                other.gameObject.GetComponent<EnemyHealth>().removeHealth(damage);
+                Destroy(gameObject);
             }
-            // deal damage to the enemy
-            Destroy(gameObject);
         }
     }
 }

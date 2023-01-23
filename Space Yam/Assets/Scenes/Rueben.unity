@@ -529,6 +529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14136f46f21b2154ba231ce271d89bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: 0
   damage: 10
   explodes: 0
   explosionRadius: 0
@@ -1817,6 +1818,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1671952376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1671952377}
+  m_Layer: 0
+  m_Name: Firepoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1671952377
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671952376}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.717, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1810153596}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1797384041
 GameObject:
   m_ObjectHideFlags: 0
@@ -1864,6 +1896,7 @@ GameObject:
   - component: {fileID: 1810153593}
   - component: {fileID: 1810153598}
   - component: {fileID: 1810153599}
+  - component: {fileID: 1810153600}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -1945,7 +1978,8 @@ Transform:
   m_LocalPosition: {x: -12.27, y: 4.17, z: 22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1671952377}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1988,9 +2022,24 @@ MonoBehaviour:
   chosenPath: []
   currentPoint: 0
   player: {fileID: 81967532}
-  bullet: {fileID: 0}
-  force: 0
-  attackRate: 0
+  bullet: {fileID: 9121046567623158178, guid: fca0bb9708232be44b546640761ead05, type: 3}
+  firePoint: {fileID: 1671952376}
+  force: 500
+  attackRate: 1
+--- !u!114 &1810153600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810153592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953c4fbd48e90e74a812cabe5fb92c44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  curHealth: 0
 --- !u!1001 &2128574971
 PrefabInstance:
   m_ObjectHideFlags: 0

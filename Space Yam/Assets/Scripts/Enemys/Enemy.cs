@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     [Header("Attacking")]
     public GameObject player;
     public GameObject bullet;
+    public GameObject firePoint;
     public float force;
     public float attackRate;
     private float _timeSinceLastAttack;
@@ -80,8 +81,9 @@ public class Enemy : MonoBehaviour
         if (Time.time > attackRate + _timeSinceLastAttack)
         {
             _timeSinceLastAttack = Time.time;
-            GameObject tempBullet = Instantiate(bullet, transform.position, transform.rotation);
-            tempBullet.GetComponent<Rigidbody>().AddForce((transform.position - player.transform.position) * force);
+            firePoint.transform.LookAt(player.transform);
+            GameObject tempBullet = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
+            tempBullet.GetComponent<Rigidbody>().AddForce(tempBullet.transform.forward * force);
         }
 
 

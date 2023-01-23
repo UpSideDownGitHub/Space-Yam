@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 2383822568708249024}
   - component: {fileID: -791750490708068889}
   - component: {fileID: 682163986964379915}
+  - component: {fileID: -7273426948912732260}
   m_Layer: 0
-  m_Name: Bullet
-  m_TagString: Untagged
+  m_Name: EnemyBullet
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 9121046567623158178}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -13.664818, y: -11.665678, z: -0.07148004}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -127,9 +128,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14136f46f21b2154ba231ce271d89bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: 0
+  enemy: 1
   damage: 10
   explodes: 0
   explosionRadius: 0
   laser: 0
   laserHitTime: 0
+--- !u!114 &-7273426948912732260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9121046567623158178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953c4fbd48e90e74a812cabe5fb92c44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
+  curHealth: 0
