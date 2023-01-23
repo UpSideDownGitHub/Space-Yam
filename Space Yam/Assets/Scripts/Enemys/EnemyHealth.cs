@@ -10,8 +10,13 @@ public class EnemyHealth : MonoBehaviour
     public bool boss;
     public bool enemy;
 
+    [Header("Points")]
+    public int bulletPoints;
+    public int enemyPoints;
+
     [Header("Connections")]
     public Spawning spawning;
+    public Score score;
 
     public bool killed;
 
@@ -20,6 +25,7 @@ public class EnemyHealth : MonoBehaviour
         killed = false;
         curHealth = maxHealth;
         spawning = GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<Spawning>();
+        score = GameObject.FindGameObjectWithTag("Points").GetComponent<Score>();
     }
 
     public void removeHealth(float ammount)
@@ -35,7 +41,10 @@ public class EnemyHealth : MonoBehaviour
             {
                 spawning.currentEnemiesOnScreen--;
                 spawning.waveEnemiesLeft--;
+                score.increaseScore(enemyPoints);
             }
+            else
+                score.increaseScore(bulletPoints);
             if (boss)
                 spawning.bossDefeated = true;
             Destroy(gameObject);

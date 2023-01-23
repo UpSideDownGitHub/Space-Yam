@@ -192,3 +192,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   curHealth: 0
+  boss: 0
+  enemy: 0
+  bulletPoints: 50
+  enemyPoints: 100
+  spawning: {fileID: 0}
+  score: {fileID: 0}
+  killed: 0
