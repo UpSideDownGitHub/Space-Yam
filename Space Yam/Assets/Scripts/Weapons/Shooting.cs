@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public enum weaponTypes
 {
@@ -21,13 +22,23 @@ public class Shooting : MonoBehaviour
     public GameObject firepoint;
     public GameObject projectile;
 
+    [Header("Time")]
+    public float shotTimer;
+    private float _timeSinceLastShot;
+
     [Header("Pistol")]
     public float bulletForce;
 
     [Header("Laser")]
     public GameObject laserObject;
     public GameObject laserAimPos;
+    public float shootTime;
+    public Slider slider;
+
     private bool _shootingLaser;
+    private float _sliderTime;
+    private int _sliderMin = 0;
+    private int _sliderMax = 100;
 
 
     [Header("INPUT")]
@@ -39,6 +50,11 @@ public class Shooting : MonoBehaviour
     void Start()
     {
         _cam = Camera.main;
+
+        slider.minValue = _sliderMin;
+        slider.maxValue = _sliderMax;
+
+        _timeSinceLastShot = 0;
     }
 
     // Update is called once per frame
@@ -53,6 +69,19 @@ public class Shooting : MonoBehaviour
                 var aim = _cam.ScreenToWorldPoint(mousePos);
 
                 laserAimPos.transform.LookAt(aim);
+
+
+                if (slider.value >= _sliderMax)
+                {
+                    _shootingLaser = false;
+                    laserObject.SetActive(false);
+                    _timeSinceLastShot = Time.time;
+                }
+                else if (slider.value <= _sliderMax)
+                {
+                    _sliderTime += Time.deltaTime;
+                    slider.value = Mathf.Lerp(_sliderMin, _sliderMax, _sliderTime / 2);
+                }
             }
 
             if (fire.action.WasReleasedThisFrame())
@@ -61,12 +90,19 @@ public class Shooting : MonoBehaviour
                 _shootingLaser = false;
             }
         }
+        else if (slider.value > _sliderMin)
+        {
+            _sliderTime -= Time.deltaTime;
+            slider.value = Mathf.Lerp(_sliderMin, _sliderMax, _sliderTime / 2);
+        }
 
 
-        if (weaponType == weaponTypes.Pistol)
+        if ((weaponType == weaponTypes.Pistol || weaponType == weaponTypes.YamLauncher) && Time.time > shotTimer + _timeSinceLastShot)
         {
             if (fire.action.WasPressedThisFrame())
             {
+                _timeSinceLastShot = Time.time;
+
                 Vector3 mousePos = mousePosition.action.ReadValue<Vector2>();
                 mousePos += _cam.transform.forward * 10f;
                 var aim = _cam.ScreenToWorldPoint(mousePos);
@@ -77,7 +113,7 @@ public class Shooting : MonoBehaviour
                 projectileClone.GetComponent<Rigidbody>().AddForce(projectileClone.transform.forward * bulletForce);
             }
         }
-        else if (weaponType == weaponTypes.Laser && !_shootingLaser)
+        else if (weaponType == weaponTypes.Laser && !_shootingLaser && Time.time > shotTimer + _timeSinceLastShot)
         {
             if (fire.action.WasPressedThisFrame())
             {
@@ -85,12 +121,5 @@ public class Shooting : MonoBehaviour
                 _shootingLaser = true;
             }
         }
-        else if (weaponType == weaponTypes.YamLauncher)
-        {
-
-        }
-
-    }
-
-    
+    }  
 }
