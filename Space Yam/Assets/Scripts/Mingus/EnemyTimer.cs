@@ -12,7 +12,7 @@ public class EnemyTimer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawnCooldown = 5;
+        spawnCooldown = 2.5f;
     }
 
     // Update is called once per frame
@@ -24,9 +24,9 @@ public class EnemyTimer : MonoBehaviour
         {
             //enemyScript.Awake();
 
-            Instantiate(gameObject, enemyScript.enemySpawnPosition, Quaternion.identity);
+            Instantiate(enemyBasic, enemyScript.enemySpawnPosition, Quaternion.identity);
 
-            spawnCooldown = 5;
+            spawnCooldown = 2.5f;
         }
     }
 }
