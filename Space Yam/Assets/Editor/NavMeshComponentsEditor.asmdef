@@ -1,0 +1,16 @@
+{
+    "name": "NavMeshComponentsEditor",
+    "rootNamespace": "",
+    "references": [
+        "NavMeshComponents"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

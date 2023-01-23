@@ -4,9 +4,36 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public bool explodes;
+    [Header("General")]
+    public float damage;
 
+    [Header("Explosion")]
+    public bool explodes;
     public float explosionRadius;
+
+    [Header("Laser")]
+    public bool laser;
+    public float laserHitTime;
+    private float _laserLastHitTime;
+
+    public void Start()
+    {
+        _laserLastHitTime = 0;
+    }
+
+    public void OnTriggerStay(Collider other)
+    {
+        if (!laser)
+            return;
+        if (other.CompareTag("Enemy"))
+        {
+            if (Time.time > _laserLastHitTime + laserHitTime)
+            {
+                _laserLastHitTime = Time.time;
+                other.gameObject.GetComponent<EnemyHealth>().removeHealth(damage);
+            }
+        }
+    }
 
     public void OnTriggerEnter(Collider other)
     {
@@ -19,7 +46,7 @@ public class Bullet : MonoBehaviour
                 {
                     if (Vector3.Distance(transform.position, enemys[i].transform.position) > explosionRadius)
                     {
-                        // deal damage to the enemy
+                        enemys[i].GetComponent<EnemyHealth>().removeHealth(damage);
                     }
                 }
             }

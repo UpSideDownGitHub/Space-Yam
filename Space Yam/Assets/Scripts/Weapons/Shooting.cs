@@ -51,8 +51,18 @@ public class Shooting : MonoBehaviour
     {
         _cam = Camera.main;
 
-        slider.minValue = _sliderMin;
-        slider.maxValue = _sliderMax;
+
+
+        if (weaponType == weaponTypes.Laser)
+        {
+            slider.enabled = true;
+            slider.minValue = _sliderMin;
+            slider.maxValue = _sliderMax;
+        }
+        else
+        {
+            slider.enabled = false;
+        }
 
         _timeSinceLastShot = 0;
     }
@@ -60,17 +70,17 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // rotate the weapon to face the correct direction
+        Vector3 mousePos1 = mousePosition.action.ReadValue<Vector2>();
+        mousePos1 += _cam.transform.forward * 10f;
+        var aim1 = _cam.ScreenToWorldPoint(mousePos1);
+        currentGun.transform.LookAt(aim1);
+
+
         if (_shootingLaser)
         {
             if (fire.action.IsPressed())
             {
-                Vector3 mousePos = mousePosition.action.ReadValue<Vector2>();
-                mousePos += _cam.transform.forward * 10f;
-                var aim = _cam.ScreenToWorldPoint(mousePos);
-
-                laserAimPos.transform.LookAt(aim);
-
-
                 if (slider.value >= _sliderMax)
                 {
                     _shootingLaser = false;
@@ -90,10 +100,13 @@ public class Shooting : MonoBehaviour
                 _shootingLaser = false;
             }
         }
-        else if (slider.value > _sliderMin)
+        else if (weaponType == weaponTypes.Laser)
         {
-            _sliderTime -= Time.deltaTime;
-            slider.value = Mathf.Lerp(_sliderMin, _sliderMax, _sliderTime / 2);
+            if (slider.value > _sliderMin)
+            {
+                _sliderTime -= Time.deltaTime;
+                slider.value = Mathf.Lerp(_sliderMin, _sliderMax, _sliderTime / 2);
+            }
         }
 
 
@@ -102,13 +115,6 @@ public class Shooting : MonoBehaviour
             if (fire.action.WasPressedThisFrame())
             {
                 _timeSinceLastShot = Time.time;
-
-                Vector3 mousePos = mousePosition.action.ReadValue<Vector2>();
-                mousePos += _cam.transform.forward * 10f;
-                var aim = _cam.ScreenToWorldPoint(mousePos);
-
-                firepoint.transform.LookAt(aim);
-
                 GameObject projectileClone = Instantiate(projectile, firepoint.transform.position, firepoint.transform.rotation);
                 projectileClone.GetComponent<Rigidbody>().AddForce(projectileClone.transform.forward * bulletForce);
             }
