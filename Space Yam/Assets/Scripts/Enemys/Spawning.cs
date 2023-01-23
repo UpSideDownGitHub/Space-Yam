@@ -19,10 +19,12 @@ public class Spawning : MonoBehaviour
 
     [Header("Boss")]
     public bool bossDefeated;
+    [SerializeField]
     private bool _isBossLevel;
 
     [Header("Wave Stats")]
     public int waveEnemiesLeft; // the ammount left (how many killed)
+    public int waveEnemiesSpawned; // the ammount allready in game and so not needing to be spawned
 
     public int enemyCount;
     public float enemyHealth;
@@ -38,8 +40,8 @@ public class Spawning : MonoBehaviour
     public float increaseAfterLevel_EnemyHealth;
     public float increaseAfterBoss_EnemyHealth;
     // Shoot Rate
-    public float increaseAfterLevel_EnemyFirerate;
-    public float increaseAfterBoss_EnemyFirerate;
+    public float decreaseAfterLevel_EnemyFirerate;
+    public float decreaseAfterBoss_EnemyFirerate;
 
     [Header("Enemy Control")]
     public int maxEnemiesOnScreen;
@@ -54,13 +56,22 @@ public class Spawning : MonoBehaviour
     [Header("Wave Transition")]
     public float warpTime;
     public bool startWave;
+    [SerializeField]
+    private bool _nothing;
+
+    public void Start()
+    {
+        startWave = true;
+        StartWave();
+    }
 
     public void StartWave()
     {
         waveEnemiesLeft = enemyCount;
+        waveEnemiesSpawned = enemyCount;
         bossDefeated = false;
 
-        if (waveNumber % bossLevel == 0)
+        if (waveNumber % bossLevel == 0 && waveNumber != 0)
             _isBossLevel = true;
 
         if (_isBossLevel)
@@ -71,10 +82,11 @@ public class Spawning : MonoBehaviour
             var healthComp = tempEnemy.GetComponent<EnemyHealth>();
             enemyComp.attackRate = bossFirerate;
             healthComp.maxHealth = bossHealth;
+            healthComp.boss = true;
         }
         else
         {
-            for (int i = 0; i < maxEnemiesOnScreen; i++)
+            for (int i = currentEnemiesOnScreen; i < maxEnemiesOnScreen; i++)
             {
                 var spawnPoint = spawnPositions[Random.Range(0, spawnPositions.Length)];
                 GameObject tempEnemy = Instantiate(enemy, spawnPoint.transform.position, spawnPoint.transform.rotation);
@@ -82,7 +94,9 @@ public class Spawning : MonoBehaviour
                 var healthComp = tempEnemy.GetComponent<EnemyHealth>();
                 enemyComp.attackRate = enemyFirerate;
                 healthComp.maxHealth = enemyHealth;
+                healthComp.enemy = true;
                 currentEnemiesOnScreen++;
+                waveEnemiesSpawned--;
             }
         }
         startWave = false;
@@ -90,31 +104,34 @@ public class Spawning : MonoBehaviour
 
     public void EndWave(bool bossLevel)
     {
+        waveNumber++;
         if (bossLevel)
         {
             enemyCount = (int)(enemyCount * increaseAfterBoss_EnemyCount);
             enemyHealth *= increaseAfterBoss_EnemyHealth;
-            enemyFirerate *= increaseAfterBoss_EnemyFirerate;
+            enemyFirerate *= decreaseAfterBoss_EnemyFirerate;
             bossHealth *= increaseAfterBoss_EnemyHealth;
-            bossFirerate *= increaseAfterBoss_EnemyFirerate;
+            bossFirerate *= decreaseAfterBoss_EnemyFirerate;
         }
         else
         {
             enemyCount = (int)(enemyCount * increaseAfterLevel_EnemyCount);
             enemyHealth *= increaseAfterLevel_EnemyHealth;
-            enemyFirerate *= increaseAfterLevel_EnemyFirerate;
+            enemyFirerate *= decreaseAfterLevel_EnemyFirerate;
             bossHealth *= increaseAfterLevel_EnemyHealth;
-            bossFirerate *= increaseAfterLevel_EnemyFirerate;
+            bossFirerate *= decreaseAfterLevel_EnemyFirerate;
         }
 
         StartCoroutine(warpSpeed());
     }
     public IEnumerator warpSpeed()
     {
+        _nothing = true;
         // code here to make the particle effect warp
         yield return new WaitForSeconds(warpTime);
         // and then unwarp
         startWave = true;
+        _nothing = false;
     }
 
 
@@ -124,7 +141,7 @@ public class Spawning : MonoBehaviour
         {
             EndWave(true);
         }
-        if (waveEnemiesLeft == 0)
+        else if (waveEnemiesLeft == 0)
         {
             EndWave(false);
         }
@@ -133,12 +150,18 @@ public class Spawning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (startWave)
-            StartWave();
+        if (_nothing)
+            return;
 
-        if (currentEnemiesOnScreen < maxEnemiesOnScreen && waveEnemiesLeft > 0)
+        if (startWave)
         {
-            for (int i = 0; i < maxEnemiesOnScreen; i++)
+            StartWave();
+            return;
+        }
+
+        if (currentEnemiesOnScreen < maxEnemiesOnScreen && waveEnemiesSpawned > 0 && !_isBossLevel)
+        {
+            for (int i = currentEnemiesOnScreen; i < maxEnemiesOnScreen; i++)
             {
                 var spawnPoint = spawnPositions[Random.Range(0, spawnPositions.Length)];
                 GameObject tempEnemy = Instantiate(enemy, spawnPoint.transform.position, spawnPoint.transform.rotation);
@@ -146,8 +169,11 @@ public class Spawning : MonoBehaviour
                 var healthComp = tempEnemy.GetComponent<EnemyHealth>();
                 enemyComp.attackRate = enemyFirerate;
                 healthComp.maxHealth = enemyHealth;
+                healthComp.enemy = true;
                 currentEnemiesOnScreen++;
+                waveEnemiesSpawned--;
             }
+            return;
         }
 
 

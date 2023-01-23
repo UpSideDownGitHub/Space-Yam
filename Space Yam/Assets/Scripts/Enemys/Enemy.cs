@@ -29,6 +29,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         agent.SetDestination(new Vector3(chosenPath[currentPoint].x, chosenPath[currentPoint].y, transform.position.z));
     }
 
