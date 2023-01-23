@@ -1865,8 +1865,8 @@ GameObject:
   - component: {fileID: 1810153598}
   - component: {fileID: 1810153599}
   m_Layer: 0
-  m_Name: Enemy Test
-  m_TagString: Untagged
+  m_Name: Enemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1987,7 +1987,7 @@ MonoBehaviour:
   minDistance: 2
   chosenPath: []
   currentPoint: 0
-  player: {fileID: 0}
+  player: {fileID: 81967532}
   bullet: {fileID: 0}
   force: 0
   attackRate: 0
