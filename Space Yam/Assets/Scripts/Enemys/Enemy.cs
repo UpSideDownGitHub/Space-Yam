@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         agent.SetDestination(new Vector3(chosenPath[currentPoint].x, chosenPath[currentPoint].y, transform.position.z));
+        _timeSinceLastAttack = Time.time;
     }
 
     // Update is called once per frame

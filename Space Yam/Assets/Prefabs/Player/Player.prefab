@@ -286,6 +286,8 @@ GameObject:
   - component: {fileID: 8535716047550791378}
   - component: {fileID: 8535716047550791376}
   - component: {fileID: 8535716047550791377}
+  - component: {fileID: 4947840177986068769}
+  - component: {fileID: 977589843172369188}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -359,6 +361,38 @@ MonoBehaviour:
   - {fileID: 8535716047446429618}
   _curWeapon: 0
   weaponSwitch: {fileID: -2122643908113579979, guid: e54c24d0c42f60c4098766943a4dbf68, type: 3}
+--- !u!65 &4947840177986068769
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8535716047550791374}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1.6835241}
+  m_Center: {x: 0, y: 0, z: 0.34176207}
+--- !u!114 &977589843172369188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8535716047550791374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd98d8c1cdadd9345a4bc5ead1937bc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  healthObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &8535716047553368483
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,7 +539,6 @@ MonoBehaviour:
   explodes: 0
   explosionRadius: 0
   laser: 1
-  laserHitTime: 0.5
 --- !u!1 &8535716047913408908
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,12 +15,9 @@ public class Bullet : MonoBehaviour
 
     [Header("Laser")]
     public bool laser;
-    public float laserHitTime;
-    private float _laserLastHitTime;
 
     public void Start()
     {
-        _laserLastHitTime = 0;
     }
 
     public void OnTriggerEnter(Collider other)
@@ -30,7 +27,7 @@ public class Bullet : MonoBehaviour
             //   MAKE THIS UES THE PLAYER HEATH INSTED OF THE ENEMY HEALTH AS THIS IS STILL NOT FIXED
             if (other.CompareTag("Player"))
             {
-                other.gameObject.GetComponent<EnemyHealth>().removeHealth(damage);
+                other.gameObject.GetComponent<PlayerHealth>().removeHealth();
                 Destroy(gameObject);
             }
         }
