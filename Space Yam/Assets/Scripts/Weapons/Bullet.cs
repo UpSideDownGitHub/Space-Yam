@@ -63,7 +63,8 @@ public class Bullet : MonoBehaviour
                     }
                 }
                 other.gameObject.GetComponent<EnemyHealth>().removeHealth(damage);
-                Destroy(gameObject);
+                if (!laser)
+                    Destroy(gameObject);
             }
         }
     }
