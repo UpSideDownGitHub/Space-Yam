@@ -114,8 +114,8 @@ MonoBehaviour:
   currentGun: {fileID: 8535716047212292109}
   firepoint: {fileID: 8535716047474344896}
   projectile: {fileID: 9121046567623158178, guid: b0f14b6b98efa2f4da0dde5f34feb45f, type: 3}
-  shotTimer: 0.5
-  bulletForce: 1000
+  shotTimer: 0.35
+  bulletForce: 3000
   laserObject: {fileID: 0}
   laserAimPos: {fileID: 0}
   shootTime: 0
@@ -124,6 +124,7 @@ MonoBehaviour:
   laserDamage: 0
   fire: {fileID: -3773237696552706867, guid: e54c24d0c42f60c4098766943a4dbf68, type: 3}
   mousePosition: {fileID: -4555209704032576719, guid: e54c24d0c42f60c4098766943a4dbf68, type: 3}
+  mouseDistance: 20
 --- !u!1 &8535716047360457983
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,8 +175,8 @@ MonoBehaviour:
   currentGun: {fileID: 8535716047360457983}
   firepoint: {fileID: 8535716047553368483}
   projectile: {fileID: 9121046567623158178, guid: b0f14b6b98efa2f4da0dde5f34feb45f, type: 3}
-  shotTimer: 0.5
-  bulletForce: 1000
+  shotTimer: 0.35
+  bulletForce: 3000
   laserObject: {fileID: 0}
   laserAimPos: {fileID: 0}
   shootTime: 0
@@ -184,6 +185,7 @@ MonoBehaviour:
   laserDamage: 0
   fire: {fileID: -3773237696552706867, guid: e54c24d0c42f60c4098766943a4dbf68, type: 3}
   mousePosition: {fileID: -4555209704032576719, guid: e54c24d0c42f60c4098766943a4dbf68, type: 3}
+  mouseDistance: 20
 --- !u!1 &8535716047446429618
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +237,7 @@ MonoBehaviour:
   firepoint: {fileID: 8535716045845140367}
   projectile: {fileID: 9121046567623158178, guid: b0f14b6b98efa2f4da0dde5f34feb45f, type: 3}
   shotTimer: 1
-  bulletForce: 1000
+  bulletForce: 2000
   laserObject: {fileID: 0}
   laserAimPos: {fileID: 0}
   shootTime: 0
@@ -244,6 +246,7 @@ MonoBehaviour:
   laserDamage: 0
   fire: {fileID: -3773237696552706867, guid: e54c24d0c42f60c4098766943a4dbf68, type: 3}
   mousePosition: {fileID: -4555209704032576719, guid: e54c24d0c42f60c4098766943a4dbf68, type: 3}
+  mouseDistance: 20
 --- !u!1 &8535716047474344896
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,6 +602,7 @@ MonoBehaviour:
   laserDamage: 10
   fire: {fileID: -3773237696552706867, guid: e54c24d0c42f60c4098766943a4dbf68, type: 3}
   mousePosition: {fileID: -4555209704032576719, guid: e54c24d0c42f60c4098766943a4dbf68, type: 3}
+  mouseDistance: 20
 --- !u!1001 &8535716046376566425
 PrefabInstance:
   m_ObjectHideFlags: 0
