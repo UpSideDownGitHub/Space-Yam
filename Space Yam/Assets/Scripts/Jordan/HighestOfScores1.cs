@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.Jobs;
 using System.Linq;
 
-public class HighestOfScores1 : MonoBehaviour
+public class HighestOfScores : MonoBehaviour
 {
     [Header("Highscore Enter Screen")]
     public TMP_Text[] nameText = new TMP_Text[10];

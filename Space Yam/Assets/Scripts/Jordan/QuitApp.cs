@@ -8,6 +8,7 @@ public class QuitApp : MonoBehaviour
     public void QuitDaGame()
     {
         print("Quitting");
+        Time.timeScale = 1f;
         Application.Quit();
     }
 }

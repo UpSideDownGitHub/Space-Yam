@@ -5,9 +5,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Jobs;
 using System.Linq;
-
-
-
+using UnityEngine.SceneManagement;
 
 public class HighScore : MonoBehaviour
 {
@@ -23,6 +21,11 @@ public class HighScore : MonoBehaviour
     private int _currentScore;
     private string _currentName;
     private int _scoreID;
+
+    [Header("Swap Screen")]
+
+    public GameObject endscreen;
+    public GameObject highscorescreen;
 
     public void Start()
     {
@@ -50,11 +53,12 @@ public class HighScore : MonoBehaviour
     {
         Time.timeScale = 0f;
 
+        PlayerPrefs.SetInt("Score", scoreAchieved);
+
         playerScoreText.text = scoreAchieved.ToString();
         if (scoreAchieved == 0)
         {
-            // ENABLE THE END SCREEN
-            // dont do anyhting as there is not high enough score so at this point will have to to the end screen which will then be activated
+            SceneManager.LoadSceneAsync(2);
             return;
         }
         _currentScore = scoreAchieved;
@@ -69,6 +73,7 @@ public class HighScore : MonoBehaviour
         }
 
         // ENABLE THE END SCREEN
+        SceneManager.LoadSceneAsync(2);
     }
 
     public void setScore(int ID, int score)
@@ -78,14 +83,12 @@ public class HighScore : MonoBehaviour
         int[] scoresArr = new int[scores.Length + 1];
         for (int i = 0; i < scores.Length + 1; i++)
         {
-            print(i);
             if (i < ID - 1)
                 scoresArr[i] = scores[i];
             else if (i == ID - 1)
             {
                 
                 scoresArr[i] = score;
-                print("Setting the score here: " + i);
             }
             else
                 scoresArr[i] = scores[i - 1];
@@ -159,6 +162,7 @@ public class HighScore : MonoBehaviour
 
 
             // ENABLE THE END SCREEN
+            SceneManager.LoadSceneAsync(2);
 
             return;
         }
