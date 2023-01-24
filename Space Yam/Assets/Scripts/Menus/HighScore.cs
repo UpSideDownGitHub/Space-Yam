@@ -14,6 +14,8 @@ public class HighScore : MonoBehaviour
     public string[] names = new string[10];
     public int[] scores = new int[10];
 
+    public TMP_Text playerScoreText;
+
     private int _currentScore;
     private string _currentName;
     private int _scoreID;
@@ -31,6 +33,9 @@ public class HighScore : MonoBehaviour
 
     public void gameFinished(int scoreAchieved)
     {
+        Time.timeScale = 0f;
+
+        playerScoreText.text = scoreAchieved.ToString();
         _currentScore = scoreAchieved;
         for (int i = 0; i < 10; i++)
         {

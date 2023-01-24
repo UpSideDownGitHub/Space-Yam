@@ -8,6 +8,10 @@ public class PlayerHealth : MonoBehaviour
     public int health;
     public GameObject[] healthObjects;
 
+    public HighScore highscore;
+    public GameObject endscreenone;
+    public Score score;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +23,9 @@ public class PlayerHealth : MonoBehaviour
         health--;
         if (health <= 0)
         {
+            endscreenone.SetActive(true);
             // reload the current scene
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+            highscore.gameFinished(score.score);
             return;
         }
         var health1 = health - 1;
