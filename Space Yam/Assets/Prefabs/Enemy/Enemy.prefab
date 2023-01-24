@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 6071138634574570131}
   - component: {fileID: 6071138634574570130}
   - component: {fileID: 6071138634574570093}
-  - component: {fileID: 6905416257213553393}
+  - component: {fileID: 2095053174877151896}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -200,7 +200,7 @@ MonoBehaviour:
   spawning: {fileID: 0}
   score: {fileID: 0}
   killed: 0
---- !u!95 &6905416257213553393
+--- !u!95 &2095053174877151896
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0

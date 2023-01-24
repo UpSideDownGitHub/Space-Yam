@@ -575,6 +575,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2095053174877151896, guid: 3d2e808deef9f294bab9143b6bf754ce, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fec8c580f12e5ba489ba0cb7435bd0b3, type: 2}
     - target: {fileID: 6071138634574570129, guid: 3d2e808deef9f294bab9143b6bf754ce, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -623,7 +627,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 3d2e808deef9f294bab9143b6bf754ce, type: 3}
 --- !u!1 &1480181389
 GameObject:
