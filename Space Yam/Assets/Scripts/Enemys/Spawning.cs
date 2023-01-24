@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Spawning : MonoBehaviour
@@ -59,10 +60,18 @@ public class Spawning : MonoBehaviour
     [SerializeField]
     private bool _nothing;
 
+    [Header("UI Features")]
+    public GameObject waveUI;
+    public GameObject bossUI;
+    public GameObject levelCompleteUI;
+    public TMP_Text waveNumberText;
+    public float waveStartTime;
+    public GameObject fastWarp;
+    public GameObject slowWarp;
+
     public void Start()
     {
-        startWave = true;
-        StartWave();
+        StartCoroutine(startGame());
     }
 
     public void StartWave()
@@ -112,6 +121,10 @@ public class Spawning : MonoBehaviour
             enemyFirerate *= decreaseAfterBoss_EnemyFirerate;
             bossHealth *= increaseAfterBoss_EnemyHealth;
             bossFirerate *= decreaseAfterBoss_EnemyFirerate;
+
+
+            // show the complete boss UI
+            bossUI.SetActive(true);
         }
         else
         {
@@ -120,16 +133,49 @@ public class Spawning : MonoBehaviour
             enemyFirerate *= decreaseAfterLevel_EnemyFirerate;
             bossHealth *= increaseAfterLevel_EnemyHealth;
             bossFirerate *= decreaseAfterLevel_EnemyFirerate;
+
+            // show the comple wave UI
+            waveUI.SetActive(true);
         }
 
         StartCoroutine(warpSpeed());
     }
+    public IEnumerator startGame()
+    {
+        _nothing = true;
+
+        // show level start screen
+        waveNumberText.text = (waveNumber + 1).ToString();
+        levelCompleteUI.SetActive(true);
+        yield return new WaitForSeconds(waveStartTime);
+        levelCompleteUI.SetActive(false);
+
+        startWave = true;
+        _nothing = false;
+    }
+
     public IEnumerator warpSpeed()
     {
         _nothing = true;
         // code here to make the particle effect warp
+        slowWarp.SetActive(false);
+        fastWarp.SetActive(true);
+
         yield return new WaitForSeconds(warpTime);
         // and then unwarp
+        slowWarp.SetActive(true);
+        fastWarp.SetActive(false);
+
+        // disable the level complete screen
+        bossUI.SetActive(false);
+        waveUI.SetActive(false);
+
+        // show level start screen
+        waveNumberText.text = (waveNumber + 1).ToString();
+        levelCompleteUI.SetActive(true);
+        yield return new WaitForSeconds(waveStartTime);
+        levelCompleteUI.SetActive(false);
+
         startWave = true;
         _nothing = false;
     }

@@ -51,6 +51,8 @@ public class Shooting : MonoBehaviour
     public InputActionReference fire;
     public InputActionReference mousePosition;
 
+    public float mouseDistance;
+
 
     // Start is called before the first frame update
     void Start()
@@ -80,7 +82,7 @@ public class Shooting : MonoBehaviour
     {
         // rotate the weapon to face the correct direction
         Vector3 mousePos1 = mousePosition.action.ReadValue<Vector2>();
-        mousePos1 += _cam.transform.forward * 10f;
+        mousePos1 += _cam.transform.forward * mouseDistance;
         var aim1 = _cam.ScreenToWorldPoint(mousePos1);
         currentGun.transform.LookAt(aim1);
 
