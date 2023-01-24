@@ -22,6 +22,7 @@ public class Bullet : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+        print(other.tag);
         if (enemy)
         {
             //   MAKE THIS UES THE PLAYER HEATH INSTED OF THE ENEMY HEALTH AS THIS IS STILL NOT FIXED
