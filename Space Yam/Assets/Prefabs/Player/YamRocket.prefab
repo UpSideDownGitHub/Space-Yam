@@ -128,8 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: 0
-  damage: 10
+  damage: 20
   explodes: 1
-  explosionRadius: 10
+  explosionRadius: 5
   laser: 0
-  laserHitTime: 0

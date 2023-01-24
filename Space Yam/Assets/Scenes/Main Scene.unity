@@ -18286,15 +18286,15 @@ PrefabInstance:
       objectReference: {fileID: 1003361280}
     - target: {fileID: 6071138634574570130, guid: 3d2e808deef9f294bab9143b6bf754ce, type: 3}
       propertyPath: chosenPath.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6071138634574570130, guid: 3d2e808deef9f294bab9143b6bf754ce, type: 3}
       propertyPath: chosenPath.Array.data[0].x
-      value: -28.497799
+      value: -0.28804398
       objectReference: {fileID: 0}
     - target: {fileID: 6071138634574570130, guid: 3d2e808deef9f294bab9143b6bf754ce, type: 3}
       propertyPath: chosenPath.Array.data[0].y
-      value: 13.036181
+      value: 12.142834
       objectReference: {fileID: 0}
     - target: {fileID: 6071138634574570130, guid: 3d2e808deef9f294bab9143b6bf754ce, type: 3}
       propertyPath: chosenPath.Array.data[0].z
@@ -18302,11 +18302,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6071138634574570130, guid: 3d2e808deef9f294bab9143b6bf754ce, type: 3}
       propertyPath: chosenPath.Array.data[1].x
-      value: -4.4476986
+      value: -0.04216051
       objectReference: {fileID: 0}
     - target: {fileID: 6071138634574570130, guid: 3d2e808deef9f294bab9143b6bf754ce, type: 3}
       propertyPath: chosenPath.Array.data[1].y
-      value: 12.928303
+      value: -11.030259
       objectReference: {fileID: 0}
     - target: {fileID: 6071138634574570130, guid: 3d2e808deef9f294bab9143b6bf754ce, type: 3}
       propertyPath: chosenPath.Array.data[1].z
@@ -25192,7 +25192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveNumber: 0
-  bossLevel: 5
+  bossLevel: 1
   bossDefeated: 0
   _isBossLevel: 0
   waveEnemiesLeft: 0
@@ -25200,18 +25200,20 @@ MonoBehaviour:
   enemyCount: 5
   enemyHealth: 20
   enemyFirerate: 5
-  bossHealth: 500
-  bossFirerate: 5
+  bossHealth: 1000
+  bossFirerate: 2
+  bossIncreaseFireRate: 1
   increaseAfterLevel_EnemyCount: 1.5
   increaseAfterBoss_EnemyCount: 2
   increaseAfterLevel_EnemyHealth: 1.5
   increaseAfterBoss_EnemyHealth: 2
   decreaseAfterLevel_EnemyFirerate: 0.9
   decreaseAfterBoss_EnemyFirerate: 0.75
+  bossdecreasefirerateAmmount: 0.95
   maxEnemiesOnScreen: 5
   currentEnemiesOnScreen: 0
   enemy: {fileID: 6071138634574570133, guid: 3d2e808deef9f294bab9143b6bf754ce, type: 3}
-  bossEnemy: {fileID: 6071138634574570133, guid: 3d2e808deef9f294bab9143b6bf754ce, type: 3}
+  bossEnemy: {fileID: 5755943660226314677, guid: 279534814f3c3ab47aa97707b06d678e, type: 3}
   spawnPositions:
   - {fileID: 676743149}
   - {fileID: 1882854171}
@@ -33078,96 +33080,3 @@ Transform:
   m_Father: {fileID: 1788583134}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
---- !u!1001 &1990657180994551691
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5755943660226314673, guid: 279534814f3c3ab47aa97707b06d678e, type: 3}
-      propertyPath: m_RootOrder
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 5755943660226314673, guid: 279534814f3c3ab47aa97707b06d678e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 5755943660226314673, guid: 279534814f3c3ab47aa97707b06d678e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 19.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 5755943660226314673, guid: 279534814f3c3ab47aa97707b06d678e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 8.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 5755943660226314673, guid: 279534814f3c3ab47aa97707b06d678e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5755943660226314673, guid: 279534814f3c3ab47aa97707b06d678e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5755943660226314673, guid: 279534814f3c3ab47aa97707b06d678e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5755943660226314673, guid: 279534814f3c3ab47aa97707b06d678e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5755943660226314673, guid: 279534814f3c3ab47aa97707b06d678e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5755943660226314673, guid: 279534814f3c3ab47aa97707b06d678e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5755943660226314673, guid: 279534814f3c3ab47aa97707b06d678e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5755943660226314674, guid: 279534814f3c3ab47aa97707b06d678e, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1003361280}
-    - target: {fileID: 5755943660226314674, guid: 279534814f3c3ab47aa97707b06d678e, type: 3}
-      propertyPath: chosenPath.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5755943660226314674, guid: 279534814f3c3ab47aa97707b06d678e, type: 3}
-      propertyPath: chosenPath.Array.data[0].x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5755943660226314674, guid: 279534814f3c3ab47aa97707b06d678e, type: 3}
-      propertyPath: chosenPath.Array.data[0].y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5755943660226314674, guid: 279534814f3c3ab47aa97707b06d678e, type: 3}
-      propertyPath: chosenPath.Array.data[1].x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5755943660226314674, guid: 279534814f3c3ab47aa97707b06d678e, type: 3}
-      propertyPath: chosenPath.Array.data[1].y
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5755943660226314674, guid: 279534814f3c3ab47aa97707b06d678e, type: 3}
-      propertyPath: chosenPath.Array.data[2].x
-      value: -2.2295651
-      objectReference: {fileID: 0}
-    - target: {fileID: 5755943660226314674, guid: 279534814f3c3ab47aa97707b06d678e, type: 3}
-      propertyPath: chosenPath.Array.data[2].y
-      value: 1.5672765
-      objectReference: {fileID: 0}
-    - target: {fileID: 5755943660226314677, guid: 279534814f3c3ab47aa97707b06d678e, type: 3}
-      propertyPath: m_Name
-      value: Boss
-      objectReference: {fileID: 0}
-    - target: {fileID: 5755943660226314677, guid: 279534814f3c3ab47aa97707b06d678e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 279534814f3c3ab47aa97707b06d678e, type: 3}

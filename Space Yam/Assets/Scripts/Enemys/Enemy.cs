@@ -51,6 +51,7 @@ public class Enemy : MonoBehaviour
         paths.Add(Path3);
         paths.Add(Path4);
         paths.Add(Path5);
+
         paths.Add(Path6);
         paths.Add(Path7);
         paths.Add(Path8);

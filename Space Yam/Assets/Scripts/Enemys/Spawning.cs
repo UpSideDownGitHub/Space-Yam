@@ -32,6 +32,7 @@ public class Spawning : MonoBehaviour
     public float enemyFirerate;
     public float bossHealth;
     public float bossFirerate;
+    public float bossIncreaseFireRate;
 
     [Header("Increase Ammount")]
     // Ammount
@@ -43,6 +44,8 @@ public class Spawning : MonoBehaviour
     // Shoot Rate
     public float decreaseAfterLevel_EnemyFirerate;
     public float decreaseAfterBoss_EnemyFirerate;
+    // boss
+    public float bossdecreasefirerateAmmount;
 
     [Header("Enemy Control")]
     public int maxEnemiesOnScreen;
@@ -90,9 +93,11 @@ public class Spawning : MonoBehaviour
         {
             // spawn a boss
             GameObject tempEnemy = Instantiate(bossEnemy, bossSpawn.transform.position, bossSpawn.transform.rotation);
-            var enemyComp = tempEnemy.GetComponent<Enemy>();
+            var enemyComp = tempEnemy.GetComponent<Boss>();
             var healthComp = tempEnemy.GetComponent<EnemyHealth>();
             enemyComp.attackRate = bossFirerate;
+            // need to change all other firates to match the boss increase one
+            enemyComp.reduceFirerate(bossIncreaseFireRate);
             healthComp.maxHealth = bossHealth;
             healthComp.boss = true;
         }
@@ -125,6 +130,7 @@ public class Spawning : MonoBehaviour
             bossHealth *= increaseAfterBoss_EnemyHealth;
             bossFirerate *= decreaseAfterBoss_EnemyFirerate;
 
+            bossIncreaseFireRate *= bossdecreasefirerateAmmount;
 
             // show the complete boss UI
             //bossUI.SetActive(true);
@@ -144,6 +150,8 @@ public class Spawning : MonoBehaviour
             enemyFirerate *= decreaseAfterLevel_EnemyFirerate;
             bossHealth *= increaseAfterLevel_EnemyHealth;
             bossFirerate *= decreaseAfterLevel_EnemyFirerate;
+
+            bossIncreaseFireRate *= bossdecreasefirerateAmmount;
 
             // show the comple wave UI
             //waveUI.SetActive(true);

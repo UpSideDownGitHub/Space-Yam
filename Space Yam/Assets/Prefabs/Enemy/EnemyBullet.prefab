@@ -133,7 +133,6 @@ MonoBehaviour:
   explodes: 0
   explosionRadius: 0
   laser: 0
-  laserHitTime: 0
 --- !u!114 &-7273426948912732260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,3 +147,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1
   curHealth: 0
+  boss: 0
+  enemy: 0
+  bulletPoints: 50
+  enemyPoints: 100
+  spawning: {fileID: 0}
+  score: {fileID: 0}
+  killed: 0

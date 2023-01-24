@@ -38,13 +38,18 @@ public class Bullet : MonoBehaviour
                 if (explodes)
                 {
                     GameObject[] enemys = GameObject.FindGameObjectsWithTag("Enemy");
+                    Debug.Log("Ammount of Enemies: " + enemys.Length);
+                    Debug.Log("Explosion Radius: " + explosionRadius); 
                     for (int i = 0; i < enemys.Length; i++)
                     {
-                        if (Vector3.Distance(transform.position, enemys[i].transform.position) > explosionRadius)
+                        Debug.Log("Distance: " + Vector3.Distance(transform.position, enemys[i].transform.position));
+                        if (Vector3.Distance(transform.position, enemys[i].transform.position) < explosionRadius)
                         {
+                            print("Attacked Another enemy");
                             enemys[i].GetComponent<EnemyHealth>().removeHealth(damage);
                         }
                     }
+                    return;
                 }
                 other.gameObject.GetComponent<EnemyHealth>().removeHealth(damage);
                 if (!laser)
