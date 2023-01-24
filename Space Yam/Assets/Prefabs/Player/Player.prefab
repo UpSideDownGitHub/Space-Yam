@@ -120,6 +120,7 @@ MonoBehaviour:
   laserAimPos: {fileID: 0}
   shootTime: 0
   slider: {fileID: 0}
+  laserIncreaseTime: 2
   attackTime: 0
   laserDamage: 0
   fire: {fileID: -3773237696552706867, guid: e54c24d0c42f60c4098766943a4dbf68, type: 3}
@@ -181,6 +182,7 @@ MonoBehaviour:
   laserAimPos: {fileID: 0}
   shootTime: 0
   slider: {fileID: 0}
+  laserIncreaseTime: 2
   attackTime: 0
   laserDamage: 0
   fire: {fileID: -3773237696552706867, guid: e54c24d0c42f60c4098766943a4dbf68, type: 3}
@@ -242,6 +244,7 @@ MonoBehaviour:
   laserAimPos: {fileID: 0}
   shootTime: 0
   slider: {fileID: 0}
+  laserIncreaseTime: 2
   attackTime: 0
   laserDamage: 0
   fire: {fileID: -3773237696552706867, guid: e54c24d0c42f60c4098766943a4dbf68, type: 3}
@@ -291,6 +294,7 @@ GameObject:
   - component: {fileID: 8535716047550791377}
   - component: {fileID: 4947840177986068769}
   - component: {fileID: 977589843172369188}
+  - component: {fileID: 7130998904391107692}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -390,6 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  sheild: 0
   healthObjects:
   - {fileID: 0}
   - {fileID: 0}
@@ -399,6 +404,23 @@ MonoBehaviour:
   highscore: {fileID: 0}
   endscreenone: {fileID: 0}
   score: {fileID: 0}
+--- !u!114 &7130998904391107692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8535716047550791374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 706801495201c8440905df3fbf51d5fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 977589843172369188}
+  pistol1: {fileID: 8535716047212292118}
+  pistol2: {fileID: 8535716047360457981}
+  laser: {fileID: 8535716047913408914}
+  rocketLauncher: {fileID: 8535716047446429616}
 --- !u!1 &8535716047553368483
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,6 +623,7 @@ MonoBehaviour:
   laserAimPos: {fileID: 8535716047913408908}
   shootTime: 2
   slider: {fileID: 0}
+  laserIncreaseTime: 2
   attackTime: 0.5
   laserDamage: 10
   fire: {fileID: -3773237696552706867, guid: e54c24d0c42f60c4098766943a4dbf68, type: 3}

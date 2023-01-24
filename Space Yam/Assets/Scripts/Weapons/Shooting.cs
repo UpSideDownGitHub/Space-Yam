@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,6 +35,8 @@ public class Shooting : MonoBehaviour
     public GameObject laserAimPos;
     public float shootTime;
     public Slider slider;
+
+    public float laserIncreaseTime = 2;
 
     // damaging the enemy
     public float attackTime;
@@ -100,7 +103,7 @@ public class Shooting : MonoBehaviour
                 else if (slider.value <= _sliderMax)
                 {
                     _sliderTime += Time.deltaTime;
-                    slider.value = Mathf.Lerp(_sliderMin, _sliderMax, _sliderTime / 2);
+                    slider.value = Mathf.Lerp(_sliderMin, _sliderMax, _sliderTime / laserIncreaseTime);
                 }
 
                 // need to check if enough time has passed to deal damage and if enough has then deal the damage

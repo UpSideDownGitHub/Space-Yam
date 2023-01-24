@@ -33,19 +33,33 @@ public class Bullet : MonoBehaviour
         }
         else
         {
+            if (other.CompareTag("PowerUp"))
+            {
+                if (explodes)
+                {
+                    GameObject[] powerups = GameObject.FindGameObjectsWithTag("PowerUp");
+                    for (int i = 0; i < powerups.Length; i++)
+                    {
+                        if (Vector3.Distance(transform.position, powerups[i].transform.position) < explosionRadius)
+                        {
+                            powerups[i].GetComponent<PowerUpHealth>().use(powerups[i].GetComponent<PowerupID>().ID);
+                        }
+                    }
+                    return;
+                }
+                other.gameObject.GetComponent<PowerUpHealth>().use(other.gameObject.GetComponent<PowerupID>().ID);
+                if (!laser)
+                    Destroy(gameObject);
+            }
             if (other.CompareTag("Enemy"))
             {
                 if (explodes)
                 {
                     GameObject[] enemys = GameObject.FindGameObjectsWithTag("Enemy");
-                    Debug.Log("Ammount of Enemies: " + enemys.Length);
-                    Debug.Log("Explosion Radius: " + explosionRadius); 
                     for (int i = 0; i < enemys.Length; i++)
                     {
-                        Debug.Log("Distance: " + Vector3.Distance(transform.position, enemys[i].transform.position));
                         if (Vector3.Distance(transform.position, enemys[i].transform.position) < explosionRadius)
                         {
-                            print("Attacked Another enemy");
                             enemys[i].GetComponent<EnemyHealth>().removeHealth(damage);
                         }
                     }
