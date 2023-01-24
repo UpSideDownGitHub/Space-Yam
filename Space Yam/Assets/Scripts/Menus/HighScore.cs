@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Jobs;
 using System.Linq;
+using static UnityEditor.PlayerSettings;
 
 public class HighScore : MonoBehaviour
 {
@@ -36,24 +37,48 @@ public class HighScore : MonoBehaviour
         Time.timeScale = 0f;
 
         playerScoreText.text = scoreAchieved.ToString();
+        if (scoreAchieved == 0)
+        {
+            // dont do anyhting as there is not high enough score so at this point will have to to the end screen which will then be activated
+        }
         _currentScore = scoreAchieved;
         for (int i = 0; i < 10; i++)
         {
             if (scores[i] < scoreAchieved)
             {
                 setScore(i, scoreAchieved);
-                break;
+                return;
             }
         }
+
+        // ENABLE THE END SCREEN
     }
 
     public void setScore(int ID, int score)
     {
-        for (int i = 9; i > ID; i--)
+        // this does not work only workd fore bnumbers that are lower than the highscore
+        int[] scoresArr = new int[scores.Length + 1];
+        for (int i = 0; i < scores.Length + 1; i++)
         {
-            scores[i-1] = scores[i];
-            names[i-1] = names[i];
+            if (i < ID - 1)
+                scoresArr[i] = scores[i];
+            else if (i == ID - 1)
+                scoresArr[i] = score;
+            else
+                scoresArr[i] = scores[i - 1];
         }
+
+        string[] namesArr = new string[names.Length + 1];
+        for (int i = 0; i < scores.Length + 1; i++)
+        {
+            if (i < ID - 1)
+                namesArr[i] = names[i];
+            else if (i == ID - 1)
+                namesArr[i] = "";
+            else
+                namesArr[i] = names[i - 1];
+        }
+
         scores[ID] = score;
         names[ID] = ""; // nothing as this is to be set by the player
         _currentName = "";
@@ -75,6 +100,10 @@ public class HighScore : MonoBehaviour
     {
         if (button.Equals("DEL"))
         {
+            if (_currentName.Equals(""))
+            {
+                return;
+            }
             // remove the last item of the string
             _currentName = _currentName.Remove(_currentName.Length-1);
             nameText[_scoreID].text = _currentName;
@@ -98,8 +127,14 @@ public class HighScore : MonoBehaviour
                 PlayerPrefs.SetString("Name_" + i, names[i]);
                 PlayerPrefs.SetInt("Score_" + i, scores[i]);
             }
+
+
+            // ENABLE THE END SCREEN
+
             return;
         }
+        if (_currentName.Length > 3)
+            return;
 
         // if made it this far then we know a letter button has been pressed
         _currentName += button;
