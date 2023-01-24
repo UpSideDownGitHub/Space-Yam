@@ -61,7 +61,10 @@ public class Spawning : MonoBehaviour
     private bool _nothing;
 
     [Header("UI Features")]
-    public GameObject waveUI;
+    // effects
+    public GameObject waveCompletedText;
+    public GameObject waveCompletedBlob;
+
     public GameObject bossUI;
     public GameObject levelCompleteUI;
     public TMP_Text waveNumberText;
@@ -124,7 +127,15 @@ public class Spawning : MonoBehaviour
 
 
             // show the complete boss UI
-            bossUI.SetActive(true);
+            //bossUI.SetActive(true);
+            waveCompletedBlob.SetActive(true);
+            waveCompletedText.SetActive(true);
+
+            Animator blobAnimator = waveCompletedBlob.GetComponent<Animator>();
+            blobAnimator.SetBool("waveCompleted", true);
+
+            Animator textAnimator = waveCompletedText.GetComponent<Animator>();
+            textAnimator.SetBool("waveCompleted", true);
         }
         else
         {
@@ -135,7 +146,15 @@ public class Spawning : MonoBehaviour
             bossFirerate *= decreaseAfterLevel_EnemyFirerate;
 
             // show the comple wave UI
-            waveUI.SetActive(true);
+            //waveUI.SetActive(true);
+            waveCompletedBlob.SetActive(true);
+            waveCompletedText.SetActive(true);
+
+            Animator blobAnimator = waveCompletedBlob.GetComponent<Animator>();
+            blobAnimator.SetBool("waveCompleted", true);
+
+            Animator textAnimator = waveCompletedText.GetComponent<Animator>();
+            textAnimator.SetBool("waveCompleted", true);
         }
 
         StartCoroutine(warpSpeed());
@@ -161,14 +180,27 @@ public class Spawning : MonoBehaviour
         slowWarp.SetActive(false);
         fastWarp.SetActive(true);
 
+
+
+
         yield return new WaitForSeconds(warpTime);
         // and then unwarp
         slowWarp.SetActive(true);
         fastWarp.SetActive(false);
 
         // disable the level complete screen
-        bossUI.SetActive(false);
-        waveUI.SetActive(false);
+
+        Animator blobAnimator = waveCompletedBlob.GetComponent<Animator>();
+        blobAnimator.SetBool("waveCompleted", false);
+
+        Animator textAnimator = waveCompletedText.GetComponent<Animator>();
+        textAnimator.SetBool("waveCompleted", false);
+
+        waveCompletedBlob.SetActive(false);
+        waveCompletedText.SetActive(false);
+
+        //bossUI.SetActive(false);
+        //waveUI.SetActive(false);
 
         // show level start screen
         waveNumberText.text = (waveNumber + 1).ToString();
