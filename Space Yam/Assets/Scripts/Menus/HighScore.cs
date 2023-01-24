@@ -1,10 +1,13 @@
+//#define CLEARPLAYERPREFS
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Jobs;
 using System.Linq;
-using static UnityEditor.PlayerSettings;
+
+
+
 
 public class HighScore : MonoBehaviour
 {
@@ -23,12 +26,23 @@ public class HighScore : MonoBehaviour
 
     public void Start()
     {
+#if CLEARPLAYERPREFS
         for (int i = 0; i < 10; i++)
         {
+            PlayerPrefs.SetString("Name_" + i, "");
+            PlayerPrefs.SetInt("Score_" + i, 0);
+        }
+#endif
+        for (int i = 0; i < 10; i++)
+        {
+            if (i == 0)
+            {
+                PlayerPrefs.SetString("Name_" + i, "Yam Devs");
+                PlayerPrefs.SetInt("Score_" + i, 6942069);
+            }
             names[i] = PlayerPrefs.GetString("Name_" + i, "");
             scores[i] = PlayerPrefs.GetInt("Score_" + i, 0);
         }
-
         setText();
     }
 
@@ -39,13 +53,16 @@ public class HighScore : MonoBehaviour
         playerScoreText.text = scoreAchieved.ToString();
         if (scoreAchieved == 0)
         {
+            // ENABLE THE END SCREEN
             // dont do anyhting as there is not high enough score so at this point will have to to the end screen which will then be activated
+            return;
         }
         _currentScore = scoreAchieved;
         for (int i = 0; i < 10; i++)
         {
             if (scores[i] < scoreAchieved)
             {
+                print("Place: " + i);
                 setScore(i, scoreAchieved);
                 return;
             }
@@ -56,20 +73,26 @@ public class HighScore : MonoBehaviour
 
     public void setScore(int ID, int score)
     {
+        ID++;
         // this does not work only workd fore bnumbers that are lower than the highscore
         int[] scoresArr = new int[scores.Length + 1];
         for (int i = 0; i < scores.Length + 1; i++)
         {
+            print(i);
             if (i < ID - 1)
                 scoresArr[i] = scores[i];
             else if (i == ID - 1)
+            {
+                
                 scoresArr[i] = score;
+                print("Setting the score here: " + i);
+            }
             else
                 scoresArr[i] = scores[i - 1];
         }
 
         string[] namesArr = new string[names.Length + 1];
-        for (int i = 0; i < scores.Length + 1; i++)
+        for (int i = 0; i < names.Length + 1; i++)
         {
             if (i < ID - 1)
                 namesArr[i] = names[i];
@@ -79,10 +102,16 @@ public class HighScore : MonoBehaviour
                 namesArr[i] = names[i - 1];
         }
 
-        scores[ID] = score;
-        names[ID] = ""; // nothing as this is to be set by the player
+        for (int i = 0; i < 10; i++)
+        {
+            scores[i] = scoresArr[i];
+            names[i] = namesArr[i];
+        }
+
+        //scores[ID] = score;
+        //names[ID] = ""; // nothing as this is to be set by the player
         _currentName = "";
-        _scoreID = ID;
+        _scoreID = --ID;
         setText();
     }
 
