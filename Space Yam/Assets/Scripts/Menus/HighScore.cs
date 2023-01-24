@@ -49,7 +49,7 @@ public class HighScore : MonoBehaviour
 
     public void setScore(int ID, int score)
     {
-        for (int i = 9; i >= ID; i--)
+        for (int i = 9; i > ID; i--)
         {
             scores[i-1] = scores[i];
             names[i-1] = names[i];
@@ -65,12 +65,10 @@ public class HighScore : MonoBehaviour
     {
         for (int i = 0; i < 10; i++)
         {
-            if (!names[i].Equals(""))
-            {
-                nameText[i].text = names[i];
-                scoreText[i].text = scores[i].ToString();
-            }
+            nameText[i].text = names[i];
+            scoreText[i].text = scores[i].ToString();
         }
+
     }
 
     public void ButtonPressed(string button)
@@ -78,7 +76,9 @@ public class HighScore : MonoBehaviour
         if (button.Equals("DEL"))
         {
             // remove the last item of the string
-            _currentName.Remove(_currentName.Length);
+            _currentName = _currentName.Remove(_currentName.Length-1);
+            nameText[_scoreID].text = _currentName;
+            return;
         }
         if (button.Equals("OK"))
         {
@@ -98,9 +98,11 @@ public class HighScore : MonoBehaviour
                 PlayerPrefs.SetString("Name_" + i, names[i]);
                 PlayerPrefs.SetInt("Score_" + i, scores[i]);
             }
+            return;
         }
 
         // if made it this far then we know a letter button has been pressed
         _currentName += button;
+        nameText[_scoreID].text = _currentName;
     }
 }
