@@ -23,6 +23,8 @@ public class PowerUpHealth : MonoBehaviour
 
     public GameObject effect;
 
+    public AudioSource PowerUpSFX;
+
     public void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -40,26 +42,30 @@ public class PowerUpHealth : MonoBehaviour
         if (ID == 0)
         {
             _actions.playerHealth.sheild = true;
+            
         }
         else if (ID == 1)
         {
             StartCoroutine(_actions.powerup_1());
+            
         }
         else if (ID == 2)
         {
             _actions.playerHealth.increaseHealth();
+            
         }
         else if (ID == 3)
         {
             StartCoroutine(_actions.powerup_3());
+            
         }
-
+        
         // disable the object
         _meshRenderer.enabled = false;
         _collider.enabled = false;
 
         Instantiate(effect, transform.position, transform.rotation);
-
+        PowerUpSFX.Play();
         Destroy(gameObject, 10);
     }
 }
