@@ -172,7 +172,7 @@ public class Spawning : MonoBehaviour
         _nothing = true;
 
         // show level start screen
-        waveNumberText.text = (waveNumber + 1).ToString();
+        //waveNumberText.text = (waveNumber + 1).ToString();
         levelCompleteUI.SetActive(true);
         yield return new WaitForSeconds(waveStartTime);
         levelCompleteUI.SetActive(false);
@@ -211,7 +211,7 @@ public class Spawning : MonoBehaviour
         //waveUI.SetActive(false);
 
         // show level start screen
-        waveNumberText.text = (waveNumber + 1).ToString();
+        //waveNumberText.text = (waveNumber + 1).ToString();
         levelCompleteUI.SetActive(true);
         yield return new WaitForSeconds(waveStartTime);
         levelCompleteUI.SetActive(false);
