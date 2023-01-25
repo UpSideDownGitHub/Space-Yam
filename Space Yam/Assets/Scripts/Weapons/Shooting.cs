@@ -57,11 +57,14 @@ public class Shooting : MonoBehaviour
 
     public float mouseDistance;
 
-
+    [Header("Sound General")]
+    public AudioSource sauce;
+    public AudioSource sauceLaser;
     // Start is called before the first frame update
     void Start()
     {
-        _cam = Camera.main;    
+        _cam = Camera.main;
+
     }
 
     public void OnEnable()
@@ -145,6 +148,7 @@ public class Shooting : MonoBehaviour
         {
             if (fire.action.WasPressedThisFrame())
             {
+                sauce.Play();
                 _timeSinceLastShot = Time.time;
                 GameObject projectileClone = Instantiate(projectile, firepoint.transform.position, firepoint.transform.rotation);
                 projectileClone.GetComponent<Rigidbody>().AddForce(projectileClone.transform.forward * bulletForce);
@@ -152,6 +156,7 @@ public class Shooting : MonoBehaviour
                 // spawn particles
                 GameObject temp = Instantiate(ParticleSystem, particleSystemSpawn.transform.position, particleSystemSpawn.transform.rotation);
                 temp.transform.SetParent(particleSystemSpawn.transform);
+               
             }
         }
         else if (weaponType == weaponTypes.Laser && !_shootingLaser && Time.time > shotTimer + _timeSinceLastShot)
@@ -160,7 +165,10 @@ public class Shooting : MonoBehaviour
             {
                 laserObject.SetActive(true);
                 _shootingLaser = true;
+                sauceLaser.Play();
+
             }
         }
+        
     }  
 }
