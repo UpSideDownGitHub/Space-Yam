@@ -13,6 +13,8 @@ public class EnemyHealth : MonoBehaviour
 
     public Slider healthBar;
 
+    public GameObject deathParticle;
+
     [Header("Points")]
     public int bulletPoints;
     public int enemyPoints;
@@ -57,6 +59,9 @@ public class EnemyHealth : MonoBehaviour
                 score.increaseScore(bulletPoints);
             if (boss)
                 spawning.bossDefeated = true;
+            // spawn a particle system at death point
+            Instantiate(deathParticle, transform.position, transform.rotation);
+
             Destroy(gameObject);
         }
         curHealth -= ammount;
