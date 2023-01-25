@@ -137,7 +137,7 @@ MonoBehaviour:
   - {x: 7.94, y: 0.05, z: 7}
   - {x: 9.01, y: 1.57, z: 7}
   powerup: {fileID: 8962124017005737909}
-  moveSpeed: 0
+  moveSpeed: 1
   timer: 0
   currentNodePosition: {x: 0, y: 0, z: 0}
   currentNodeID: 0
@@ -153,11 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f6e8c9e713bd45429fa998ae573712e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  increasedShootRate: 0.01
-  P1_time: 5
-  laserIncreaseRate: 0.1
-  P4_time: 5
   player: {fileID: 0}
+  used: 0
 --- !u!135 &3698816374558381870
 SphereCollider:
   m_ObjectHideFlags: 0

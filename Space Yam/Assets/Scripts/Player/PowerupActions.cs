@@ -30,7 +30,6 @@ public class PowerupActions : MonoBehaviour
 
     public IEnumerator powerup_1()
     {
-        Debug.Log("Running Power Up 1");
         float oldFireRate1 = pistol1.GetComponent<Shooting>().shotTimer;
         float oldFireRate2 = pistol2.GetComponent<Shooting>().shotTimer;
         float oldFireRate3 = rocketLauncher.GetComponent<Shooting>().shotTimer;
@@ -39,9 +38,7 @@ public class PowerupActions : MonoBehaviour
         pistol2.GetComponent<Shooting>().shotTimer = increasedShootRate;
         rocketLauncher.GetComponent<Shooting>().shotTimer = increasedShootRate;
 
-        Debug.Log("Increased Shoot Time");
         yield return new WaitForSeconds(P1_time);
-        Debug.Log("Reset Shoot Time");
 
         pistol1.GetComponent<Shooting>().shotTimer = oldFireRate1;
         pistol2.GetComponent<Shooting>().shotTimer = oldFireRate2;
