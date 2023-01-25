@@ -6737,6 +6737,8 @@ MonoBehaviour:
   - 
   - 
   scores: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  showScore: 0
+  scoreTextAsset: {fileID: 0}
 --- !u!4 &2034039964
 Transform:
   m_ObjectHideFlags: 0
