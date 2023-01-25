@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c02a095bf2dbb994eba15c9b38f3dc2e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,7 +98,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.25
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &-791750490708068889
 Rigidbody:
@@ -149,6 +149,8 @@ MonoBehaviour:
   curHealth: 0
   boss: 0
   enemy: 0
+  healthBar: {fileID: 0}
+  deathParticle: {fileID: 3501009440056736806, guid: 786afe6c8ab84154d9634925c5d5181e, type: 3}
   bulletPoints: 50
   enemyPoints: 100
   spawning: {fileID: 0}
