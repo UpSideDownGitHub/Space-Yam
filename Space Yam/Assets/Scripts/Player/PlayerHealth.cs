@@ -13,6 +13,9 @@ public class PlayerHealth : MonoBehaviour
     public GameObject endscreenone;
     public Score score;
 
+    public AudioSource GameOverSound;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +54,8 @@ public class PlayerHealth : MonoBehaviour
             //endscreenone.SetActive(true);
             // reload the current scene
             StartCoroutine(highscore.gameOver(score.score));
+            GameOverSound.Play();
+
             return;
         }
         var health1 = health - 1;

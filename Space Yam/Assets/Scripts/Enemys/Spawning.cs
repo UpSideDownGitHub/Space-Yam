@@ -75,6 +75,14 @@ public class Spawning : MonoBehaviour
     public GameObject fastWarp;
     public GameObject slowWarp;
 
+    [Header("Audio")]
+    public AudioSource WaveStartSound;
+    public AudioSource WaveEndSound;
+    public AudioSource BossStartSound;
+    
+
+
+
     public void Start()
     {
         StartCoroutine(startGame());
@@ -85,6 +93,8 @@ public class Spawning : MonoBehaviour
         waveEnemiesLeft = enemyCount;
         waveEnemiesSpawned = enemyCount;
         bossDefeated = false;
+        WaveStartSound.Play();
+
 
         if (waveNumber % bossLevel == 0 && waveNumber != 0)
             _isBossLevel = true;
@@ -93,6 +103,9 @@ public class Spawning : MonoBehaviour
 
         if (_isBossLevel)
         {
+            //Play Sound
+            BossStartSound.Play();
+
             // spawn a boss
             GameObject tempEnemy = Instantiate(bossEnemy, bossSpawn.transform.position, bossSpawn.transform.rotation);
             var enemyComp = tempEnemy.GetComponent<Boss>();
@@ -124,6 +137,7 @@ public class Spawning : MonoBehaviour
     public void EndWave(bool bossLevel)
     {
         waveNumber++;
+        WaveEndSound.Play();
         if (bossLevel)
         {
             enemyCount = (int)(enemyCount * increaseAfterBoss_EnemyCount);
@@ -189,6 +203,7 @@ public class Spawning : MonoBehaviour
         // code here to make the particle effect warp
         slowWarp.SetActive(false);
         fastWarp.SetActive(true);
+        
 
 
 
