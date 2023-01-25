@@ -22,6 +22,8 @@ public class Shooting : MonoBehaviour
     [Header("Shooting General")]
     public GameObject firepoint;
     public GameObject projectile;
+    public GameObject particleSystemSpawn;
+    public GameObject ParticleSystem;
 
     [Header("Time")]
     public float shotTimer;
@@ -146,6 +148,10 @@ public class Shooting : MonoBehaviour
                 _timeSinceLastShot = Time.time;
                 GameObject projectileClone = Instantiate(projectile, firepoint.transform.position, firepoint.transform.rotation);
                 projectileClone.GetComponent<Rigidbody>().AddForce(projectileClone.transform.forward * bulletForce);
+
+                // spawn particles
+                GameObject temp = Instantiate(ParticleSystem, particleSystemSpawn.transform.position, particleSystemSpawn.transform.rotation);
+                temp.transform.SetParent(particleSystemSpawn.transform);
             }
         }
         else if (weaponType == weaponTypes.Laser && !_shootingLaser && Time.time > shotTimer + _timeSinceLastShot)

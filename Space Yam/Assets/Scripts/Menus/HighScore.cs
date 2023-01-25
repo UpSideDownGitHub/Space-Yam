@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.Jobs;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using System;
 
 public class HighScore : MonoBehaviour
 {
@@ -26,6 +27,9 @@ public class HighScore : MonoBehaviour
 
     public GameObject endscreen;
     public GameObject highscorescreen;
+
+    public GameObject gameOverText;
+    public float gameOverTime;
 
     public void Start()
     {
@@ -49,6 +53,14 @@ public class HighScore : MonoBehaviour
         setText();
     }
 
+    public IEnumerator gameOver(int score)
+    {
+        gameOverText.SetActive(true);
+        yield return new WaitForSeconds(gameOverTime);
+        gameOverText.SetActive(false);
+        endscreen.SetActive(true);
+        gameFinished(score);
+    }
     public void gameFinished(int scoreAchieved)
     {
         Time.timeScale = 0f;
@@ -73,7 +85,7 @@ public class HighScore : MonoBehaviour
         }
 
         // ENABLE THE END SCREEN
-        SceneManager.LoadSceneAsync(2);
+        SceneManager.LoadSceneAsync("End Screen");
     }
 
     public void setScore(int ID, int score)
@@ -162,7 +174,7 @@ public class HighScore : MonoBehaviour
 
 
             // ENABLE THE END SCREEN
-            SceneManager.LoadSceneAsync(2);
+            SceneManager.LoadSceneAsync("End Screen");
 
             return;
         }

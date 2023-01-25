@@ -48,9 +48,9 @@ public class PlayerHealth : MonoBehaviour
         health--;
         if (health <= 0)
         {
-            endscreenone.SetActive(true);
+            //endscreenone.SetActive(true);
             // reload the current scene
-            highscore.gameFinished(score.score);
+            StartCoroutine(highscore.gameOver(score.score));
             return;
         }
         var health1 = health - 1;
