@@ -31,10 +31,12 @@ public class EnemyHealth : MonoBehaviour
         curHealth = maxHealth;
         spawning = GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<Spawning>();
         score = GameObject.FindGameObjectWithTag("Points").GetComponent<Score>();
-
-        healthBar.minValue = 0;
-        healthBar.maxValue = maxHealth;
-        healthBar.value = curHealth;
+        if (enemy || boss)
+        {
+            healthBar.minValue = 0;
+            healthBar.maxValue = maxHealth;
+            healthBar.value = curHealth;
+        }
     }
 
     public void removeHealth(float ammount)
@@ -58,15 +60,17 @@ public class EnemyHealth : MonoBehaviour
             Destroy(gameObject);
         }
         curHealth -= ammount;
-
-        if (_first)
+        if (enemy || boss)
         {
-            _first = false;
+            if (_first)
+            {
+                _first = false;
 
-            healthBar.minValue = 0;
-            healthBar.maxValue = maxHealth;
+                healthBar.minValue = 0;
+                healthBar.maxValue = maxHealth;
+                healthBar.value = curHealth;
+            }
             healthBar.value = curHealth;
         }
-        healthBar.value = curHealth;
     }
 }

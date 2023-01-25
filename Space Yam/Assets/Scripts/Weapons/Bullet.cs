@@ -45,6 +45,7 @@ public class Bullet : MonoBehaviour
                             powerups[i].GetComponent<PowerUpHealth>().use(powerups[i].GetComponent<PowerupID>().ID);
                         }
                     }
+                    Destroy(gameObject);
                     return;
                 }
                 other.gameObject.GetComponent<PowerUpHealth>().use(other.gameObject.GetComponent<PowerupID>().ID);
@@ -63,6 +64,7 @@ public class Bullet : MonoBehaviour
                             enemys[i].GetComponent<EnemyHealth>().removeHealth(damage);
                         }
                     }
+                    Destroy(gameObject);
                     return;
                 }
                 other.gameObject.GetComponent<EnemyHealth>().removeHealth(damage);

@@ -130,5 +130,5 @@ MonoBehaviour:
   enemy: 0
   damage: 20
   explodes: 1
-  explosionRadius: 5
+  explosionRadius: 10
   laser: 0
