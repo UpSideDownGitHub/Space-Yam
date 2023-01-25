@@ -23,6 +23,9 @@ public class HighScore : MonoBehaviour
     private string _currentName;
     private int _scoreID;
 
+    [Header("UI")]
+    public GameObject[] playerUI;
+
     [Header("Swap Screen")]
 
     public GameObject endscreen;
@@ -64,6 +67,12 @@ public class HighScore : MonoBehaviour
     public void gameFinished(int scoreAchieved)
     {
         Time.timeScale = 0f;
+
+        // disable all of the player UI
+        foreach (var item in playerUI)
+        {
+            item.SetActive(false);
+        }
 
         PlayerPrefs.SetInt("Score", scoreAchieved);
 

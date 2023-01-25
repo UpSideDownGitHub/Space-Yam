@@ -1019,6 +1019,7 @@ MonoBehaviour:
   boss: 1
   enemy: 0
   healthBar: {fileID: 1298662502399939821}
+  deathParticle: {fileID: 7697526602658119946, guid: 9439593c4fc78bc4b9d4ef6c1ec9cd9a, type: 3}
   bulletPoints: 50
   enemyPoints: 100
   spawning: {fileID: 0}

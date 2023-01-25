@@ -51,7 +51,6 @@ public class PowerUpActive : MonoBehaviour
                 counter += Time.deltaTime;
 
             float val = Mathf.Lerp(fromVal, toVal, counter / duration);
-            Debug.Log("Val: " + val);
             currentVal = val;
             powerUpRing.GetComponent<Image>().fillAmount = currentVal;
             yield return null;
@@ -75,7 +74,6 @@ public class PowerUpActive : MonoBehaviour
                 counter += Time.deltaTime;
 
             float val = Mathf.Lerp(fromVal, toVal, counter / duration);
-            Debug.Log("Val: " + val);
             currentVal = val;
             powerUpRing.GetComponent<Image>().fillAmount = currentVal;
             yield return null;
