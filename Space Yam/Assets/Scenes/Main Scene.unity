@@ -25598,7 +25598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveNumber: 0
-  bossLevel: 5
+  bossLevel: 1
   bossDefeated: 0
   _isBossLevel: 0
   waveEnemiesLeft: 0
@@ -25606,7 +25606,7 @@ MonoBehaviour:
   enemyCount: 5
   enemyHealth: 20
   enemyFirerate: 5
-  bossHealth: 1000
+  bossHealth: 100
   bossFirerate: 2
   bossIncreaseFireRate: 1
   increaseAfterLevel_EnemyCount: 1.5
