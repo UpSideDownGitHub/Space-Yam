@@ -12,6 +12,7 @@ public class PowerUpHealth : MonoBehaviour
  *      2 - INCREASE HEALTH BY 1
  *      3 - REDUCE LASER COOL DOWN
 */
+    PowerUpActive powerUpActive;
 
     public GameObject player;
     private PowerupActions _actions;
@@ -32,6 +33,8 @@ public class PowerUpHealth : MonoBehaviour
 
         _meshRenderer = GetComponent<MeshRenderer>();
         _collider = GetComponent<Collider>();
+
+        powerUpActive = GameObject.FindGameObjectWithTag("PowerUpUI").GetComponent<PowerUpActive>();
     }
 
     public void use(int ID)
@@ -46,6 +49,8 @@ public class PowerUpHealth : MonoBehaviour
         }
         else if (ID == 1)
         {
+            powerUpActive.setImage(0);
+
             StartCoroutine(_actions.powerup_1());
             
         }
@@ -56,8 +61,8 @@ public class PowerUpHealth : MonoBehaviour
         }
         else if (ID == 3)
         {
+            powerUpActive.setImage(1);
             StartCoroutine(_actions.powerup_3());
-            
         }
         
         // disable the object

@@ -8,6 +8,7 @@ TagManager:
   - EnemySpawner
   - Points
   - PowerUp
+  - PowerUpUI
   layers:
   - Default
   - TransparentFX

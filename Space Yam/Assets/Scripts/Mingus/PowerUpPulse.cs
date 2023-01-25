@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
@@ -12,9 +13,8 @@ public class PowerUpPulse : MonoBehaviour
     private float speed;
     private bool tuneUp;
 
-    public GameObject healthBar;
-    public GameObject scoreCounter;
-    public GameObject laserBar;
+    public GameObject[] images;
+    public TextMeshProUGUI scoreText;
 
     private float colourShift;
 
@@ -22,6 +22,18 @@ public class PowerUpPulse : MonoBehaviour
     {
         globalVolume.GetComponent<PostProcessVolume>();
         globalVolume.profile.TryGetSettings(out vignetteEffect);
+    }
+
+    private void OnDisable()
+    {
+        for (int i = 0; i < images.Length; i++)
+        {
+            images[i].GetComponent<Image>().color = new Color(0, 1, 1);
+        }
+
+        scoreText.GetComponent<TMP_Text>().color = new Color(0, 1, 1);
+
+        vignetteEffect.intensity.value = 0;
     }
 
     void Update()
@@ -32,14 +44,14 @@ public class PowerUpPulse : MonoBehaviour
         {
             vignetteEffect.intensity.value = Mathf.Lerp(0.05f, 0.3f, 2 * speed);
 
-            colourShift = Mathf.InverseLerp(0.05f, 0.3f, speed);
+            colourShift = Mathf.Lerp(1, 0, 2 * speed);
         }
 
         if (!tuneUp)
         {
             vignetteEffect.intensity.value = Mathf.Lerp(0.3f, 0.05f, 2 * speed);
 
-            colourShift = Mathf.InverseLerp(0.3f, 0.05f, speed);
+            colourShift = Mathf.Lerp(0, 1, 2 * speed);
         }
 
         if (vignetteEffect.intensity.value <= 0.05f && !tuneUp)
@@ -56,10 +68,11 @@ public class PowerUpPulse : MonoBehaviour
             speed = 0;
         }
 
-        healthBar.GetComponent<Image>().color = new Color(colourShift, 1, colourShift);
-        //healthBar.GetComponentInChildren<Image>().color = new Color(colourShift, 1, colourShift);
-        scoreCounter.GetComponent<Image>().color = new Color(colourShift, 1, colourShift);
-        //scoreCounter.GetComponentInChildren<Image>().color = new Color(colourShift, 1, colourShift);
-        laserBar.GetComponent<Image>().color = new Color(colourShift, 1, colourShift);
+        for (int i = 0; i < images.Length; i++)
+        {
+            images[i].GetComponent<Image>().color = new Color(colourShift, 1, colourShift);
+        }
+
+        scoreText.GetComponent<TMP_Text>().color = new Color(colourShift, 1, colourShift);
     }
 }

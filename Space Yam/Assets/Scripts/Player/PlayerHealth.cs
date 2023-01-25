@@ -15,12 +15,25 @@ public class PlayerHealth : MonoBehaviour
 
     public AudioSource GameOverSound;
 
+    public GameObject shield;
+
 
     // Start is called before the first frame update
     void Start()
     {
         sheild = false;
         health = healthObjects.Length;
+    }
+
+    public bool once;
+
+    public void Update()
+    {
+        if (sheild && !once)
+        {
+            once = true;
+            shield.SetActive(true);
+        }
     }
 
     public void increaseHealth()
@@ -44,6 +57,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if (sheild)
         {
+            shield.SetActive(false);
+            once = false;
             sheild = false;
             return;
         }
