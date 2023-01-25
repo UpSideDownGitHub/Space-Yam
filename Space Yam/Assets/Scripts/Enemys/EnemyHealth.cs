@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class EnemyHealth : MonoBehaviour
     public float curHealth;
     public bool boss;
     public bool enemy;
+
+    public Slider healthBar;
 
     [Header("Points")]
     public int bulletPoints;
@@ -19,20 +22,25 @@ public class EnemyHealth : MonoBehaviour
     public Score score;
 
     public bool killed;
+    private bool _first;
 
     public void Start()
     {
+        _first = true;
         killed = false;
         curHealth = maxHealth;
         spawning = GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<Spawning>();
         score = GameObject.FindGameObjectWithTag("Points").GetComponent<Score>();
+
+        healthBar.minValue = 0;
+        healthBar.maxValue = maxHealth;
+        healthBar.value = curHealth;
     }
 
     public void removeHealth(float ammount)
     {
         if (killed)
             return;
-        
         if (curHealth - ammount <= 0)
         {
             // kill the player
@@ -50,5 +58,15 @@ public class EnemyHealth : MonoBehaviour
             Destroy(gameObject);
         }
         curHealth -= ammount;
+
+        if (_first)
+        {
+            _first = false;
+
+            healthBar.minValue = 0;
+            healthBar.maxValue = maxHealth;
+            healthBar.value = curHealth;
+        }
+        healthBar.value = curHealth;
     }
 }
