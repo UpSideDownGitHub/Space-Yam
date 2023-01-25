@@ -118,7 +118,6 @@ MonoBehaviour:
   bulletForce: 3000
   laserObject: {fileID: 0}
   laserAimPos: {fileID: 0}
-  shootTime: 0
   slider: {fileID: 0}
   laserIncreaseTime: 2
   attackTime: 0
@@ -180,7 +179,6 @@ MonoBehaviour:
   bulletForce: 3000
   laserObject: {fileID: 0}
   laserAimPos: {fileID: 0}
-  shootTime: 0
   slider: {fileID: 0}
   laserIncreaseTime: 2
   attackTime: 0
@@ -242,7 +240,6 @@ MonoBehaviour:
   bulletForce: 2000
   laserObject: {fileID: 0}
   laserAimPos: {fileID: 0}
-  shootTime: 0
   slider: {fileID: 0}
   laserIncreaseTime: 2
   attackTime: 0
@@ -417,10 +414,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 977589843172369188}
-  pistol1: {fileID: 8535716047212292118}
-  pistol2: {fileID: 8535716047360457981}
-  laser: {fileID: 8535716047913408914}
-  rocketLauncher: {fileID: 8535716047446429616}
+  pistol1: {fileID: 8535716047212292109}
+  pistol2: {fileID: 8535716047360457983}
+  laser: {fileID: 8535716047913408908}
+  rocketLauncher: {fileID: 8535716047446429618}
+  increasedShootRate: 0.001
+  P1_time: 5
+  laserIncreaseRate: 0.01
+  P4_time: 5
 --- !u!1 &8535716047553368483
 GameObject:
   m_ObjectHideFlags: 0
@@ -621,7 +622,6 @@ MonoBehaviour:
   bulletForce: 0
   laserObject: {fileID: 8535716047847552450}
   laserAimPos: {fileID: 8535716047913408908}
-  shootTime: 2
   slider: {fileID: 0}
   laserIncreaseTime: 2
   attackTime: 0.5

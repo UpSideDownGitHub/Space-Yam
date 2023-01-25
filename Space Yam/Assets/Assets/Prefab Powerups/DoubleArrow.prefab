@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7445114780936279732}
   - component: {fileID: 1668859406556116126}
   - component: {fileID: 3698816374558381870}
+  - component: {fileID: 7954629918163383250}
   m_Layer: 0
   m_Name: DoubleArrow
   m_TagString: PowerUp
@@ -31,8 +32,8 @@ Transform:
   m_GameObject: {fileID: 8962124017005737909}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: -0.005}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -121,22 +122,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodes:
-  - {x: -3.88, y: 0, z: 3}
-  - {x: -3.37, y: 1.7, z: 3}
-  - {x: -2.49, y: 0.01, z: 3}
-  - {x: -1.66, y: 1.68, z: 3}
-  - {x: -0.89, y: 0.09, z: 3}
-  - {x: -0.25, y: 1.7, z: 3}
-  - {x: 0.45, y: 0.08, z: 3}
-  - {x: 0.98, y: 1.75, z: 3}
-  - {x: 1.66, y: 0.11, z: 3}
-  - {x: 2.2, y: 1.7, z: 3}
-  - {x: 2.89, y: 0.19, z: 3}
-  - {x: 3.32, y: 1.7, z: 3}
-  - {x: 3.97, y: 0.05, z: 3}
-  - {x: 4.56, y: 1.57, z: 3}
+  - {x: -8.59, y: 0, z: 7}
+  - {x: -6.83, y: 1.7, z: 7}
+  - {x: -5.85, y: 0.01, z: 7}
+  - {x: -3.88, y: 1.68, z: 7}
+  - {x: -2.5800002, y: 0.09, z: 7}
+  - {x: -0.68, y: 1.7, z: 7}
+  - {x: 0.45, y: 0.08, z: 7}
+  - {x: 1.53, y: 1.75, z: 7}
+  - {x: 2.68, y: 0.11, z: 7}
+  - {x: 4.17, y: 1.7, z: 7}
+  - {x: 5.43, y: 0.19, z: 7}
+  - {x: 6.43, y: 1.7, z: 7}
+  - {x: 7.94, y: 0.05, z: 7}
+  - {x: 9.01, y: 1.57, z: 7}
   powerup: {fileID: 8962124017005737909}
-  moveSpeed: 0.5
+  moveSpeed: 0
   timer: 0
   currentNodePosition: {x: 0, y: 0, z: 0}
   currentNodeID: 0
@@ -152,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f6e8c9e713bd45429fa998ae573712e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  increasedShootRate: 0.1
+  increasedShootRate: 0.01
   P1_time: 5
   laserIncreaseRate: 0.1
   P4_time: 5
@@ -168,5 +169,18 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7954629918163383250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8962124017005737909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f75ee0704f7b4441b3c1ee001a04093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 1

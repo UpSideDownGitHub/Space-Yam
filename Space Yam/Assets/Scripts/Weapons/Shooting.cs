@@ -33,7 +33,6 @@ public class Shooting : MonoBehaviour
     [Header("Laser")]
     public GameObject laserObject;
     public GameObject laserAimPos;
-    public float shootTime;
     public Slider slider;
 
     public float laserIncreaseTime = 2;
