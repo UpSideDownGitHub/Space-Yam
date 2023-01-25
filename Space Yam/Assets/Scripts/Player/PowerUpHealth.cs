@@ -21,6 +21,8 @@ public class PowerUpHealth : MonoBehaviour
 
     public bool used;
 
+    public GameObject effect;
+
     public void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -55,6 +57,9 @@ public class PowerUpHealth : MonoBehaviour
         // disable the object
         _meshRenderer.enabled = false;
         _collider.enabled = false;
+
+        Instantiate(effect, transform.position, transform.rotation);
+
         Destroy(gameObject, 10);
     }
 }

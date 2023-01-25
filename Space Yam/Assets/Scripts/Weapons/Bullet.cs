@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using System.Security.Cryptography;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class Bullet : MonoBehaviour
     [Header("Explosion")]
     public bool explodes;
     public float explosionRadius;
+    public GameObject explosion;
 
     [Header("Laser")]
     public bool laser;
@@ -45,6 +47,8 @@ public class Bullet : MonoBehaviour
                             powerups[i].GetComponent<PowerUpHealth>().use(powerups[i].GetComponent<PowerupID>().ID);
                         }
                     }
+                    // spawn a dust effect for the explosion
+                    Instantiate(explosion, transform.position, transform.rotation);
                     Destroy(gameObject);
                     return;
                 }
@@ -64,6 +68,7 @@ public class Bullet : MonoBehaviour
                             enemys[i].GetComponent<EnemyHealth>().removeHealth(damage);
                         }
                     }
+                    Instantiate(explosion, transform.position, transform.rotation);
                     Destroy(gameObject);
                     return;
                 }

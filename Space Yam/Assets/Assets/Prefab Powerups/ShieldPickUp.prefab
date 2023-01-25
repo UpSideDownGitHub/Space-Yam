@@ -169,6 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   used: 0
+  effect: {fileID: 3501009440056736806, guid: b9fc0287123da384d9b9d40ed3fbec4b, type: 3}
 --- !u!114 &1588291818854421430
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -88,6 +88,8 @@ public class Spawning : MonoBehaviour
 
         if (waveNumber % bossLevel == 0 && waveNumber != 0)
             _isBossLevel = true;
+        else
+            _isBossLevel = false;
 
         if (_isBossLevel)
         {
