@@ -87,6 +87,11 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (Time.timeScale == 0)
+            return;
+
+
         // rotate the weapon to face the correct direction
         Vector3 mousePos1 = mousePosition.action.ReadValue<Vector2>();
         mousePos1 += _cam.transform.forward * mouseDistance;
@@ -139,7 +144,7 @@ public class Shooting : MonoBehaviour
             if (slider.value > _sliderMin)
             {
                 _sliderTime -= Time.deltaTime;
-                slider.value = Mathf.Lerp(_sliderMin, _sliderMax, _sliderTime / 2);
+                slider.value = Mathf.Lerp(_sliderMin, _sliderMax, _sliderTime / laserIncreaseTime);
             }
         }
 

@@ -435,7 +435,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 2
-  m_Acceleration: 2
+  m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 0
   m_StoppingDistance: 0
@@ -498,8 +498,8 @@ MonoBehaviour:
   firePoint: {fileID: 6071138634435958037}
   force: 500
   attackRate: 2.5
-  speed: 2
-  preNodeSpeed: 3
+  speed: 7.5
+  preNodeSpeed: 10
   minAttackDelay: 0.5
   maxAttackDelay: 2
 --- !u!114 &6071138634574570093

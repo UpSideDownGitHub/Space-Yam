@@ -1,4 +1,4 @@
-//#define CLEARPLAYERPREFS
+#define CLEARPLAYERPREFS
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -58,6 +58,11 @@ public class HighScore : MonoBehaviour
 
     public IEnumerator gameOver(int score)
     {
+        // disable all of the player UI
+        foreach (var item in playerUI)
+        {
+            item.SetActive(false);
+        }
         gameOverText.SetActive(true);
         yield return new WaitForSeconds(gameOverTime);
         gameOverText.SetActive(false);
@@ -68,11 +73,6 @@ public class HighScore : MonoBehaviour
     {
         Time.timeScale = 0f;
 
-        // disable all of the player UI
-        foreach (var item in playerUI)
-        {
-            item.SetActive(false);
-        }
 
         PlayerPrefs.SetInt("Score", scoreAchieved);
 
