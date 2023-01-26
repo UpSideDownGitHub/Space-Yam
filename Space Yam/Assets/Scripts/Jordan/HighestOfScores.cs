@@ -24,7 +24,7 @@ public class HighestOfScores1 : MonoBehaviour
         if (showScore)
             {
             scoreTextAsset.text = PlayerPrefs.GetInt("Score").ToString();
-            StartCoroutine(drawScores2());
+            //StartCoroutine(drawScores2());
             return;
 
         }

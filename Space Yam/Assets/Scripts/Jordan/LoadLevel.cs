@@ -5,9 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class LoadLevel : MonoBehaviour
 {
+    public GameObject UI;
     public void LoadScene(string sceneName)
     {
         Time.timeScale = 1.0f;
-        SceneManager.LoadSceneAsync(sceneName);
+        UI.SetActive(false);
+        Loading.instance.loadscene(sceneName);
+        //SceneManager.LoadSceneAsync(sceneName);
     }
 }
